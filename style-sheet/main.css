@@ -1,4 +1,18 @@
+@import "navbar.css";
+
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Spline+Sans:wght@300..700&display=swap');
+
+:root{
+    --brand-primary-clr: #4B9E0E;
+    --brand-secondary-clr: #640AD6;
+    --txt-primary: #000000;
+    --txt-secondary: #4C4C4C;
+    --txt-tertiary: #979797;
+    --main-bg-clr: #FCFCF8;
+    --border-clr-b1: #EBEBE5;
+    --container-bg-clr: #F8F8F4;
+    --img-bg-clr: #E3EDD8;
+}
 
 *{
     padding: 0;
@@ -27,10 +41,98 @@ p{
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    font-size: 0.875rem;
 }
 
 body{
+    display: flex;
+flex-direction: column;
+align-items: center;
 color: black;
-background-color: #FCFCF8;
-padding: 2rem;
+background-color: var(--main-bg-clr);
+}
+
+section{
+    padding: 2rem;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.hero-sec{
+    display: flex;
+max-width: 75rem;
+padding: 7.5rem 2.5rem;
+justify-content: center;
+align-items: center;
+gap: 1rem;
+align-self: stretch;
+color: var(--txt-primary, #000);
+font-family: "Spline Sans";
+font-size: 2.75rem;
+font-style: normal;
+font-weight: 400;
+line-height: 4.125rem; /* 150% */
+}
+
+.footer-innr-txt{
+    color: var(--txt-tertiary, #979797);
+font-family: "Spline Sans";
+font-size: 0.875rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.3125rem; /* 150% */
+max-width: 75rem;
+align-self: stretch;
+}
+
+.footer{
+    display: flex;
+padding: 0.5rem 1.5rem;
+flex-direction: column;
+align-items: center;
+gap: 1.5rem;
+align-self: stretch;
+border-radius: 0.25rem;
+border: 1px solid var(--border-clr-b1, #EBEBE5);
+background: var(--container-bg-clr, #F8F8F4);
+}
+
+.section{
+    display: flex;
+max-width: 75rem;
+padding: 2.5rem 1rem;
+justify-content: center;
+align-items: center;
+gap: 1rem;
+align-self: stretch;
+}
+
+.container{
+    display: flex;
+padding: 2.5rem;
+justify-content: center;
+align-items: center;
+gap: 2.5rem;
+flex: 1 0 0;
+border-radius: 0.5rem;
+border: 1px solid var(--border-clr-b1, #EBEBE5);
+background: var(--container-bg-clr, #F8F8F4);
+}
+
+.img{
+    background-image: url("https://drive.google.com/open?id=1DJhKzamnflqa5faHKGR-doVOubMDedQf&usp=drive_fs");
+    flex: 1 0 0;
+align-self: stretch;
+border-radius: 0.25rem;
+background: var(--img-bg-clr, #E3EDD8);
+}
+
+.txt-style-2{
+    color: var(--txt-primary, #000);
+font-family: "Spline Sans";
+font-size: 1.125rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.6875rem; /* 150% */
+width: 30.375rem;
 }

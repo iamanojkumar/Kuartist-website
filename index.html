@@ -7,33 +7,30 @@
     <link href="style-sheet/main.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Kuartist</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="pages/about.html">About Us</a></li>
-                <li><a href="pages/contact-us.html">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav-bar class="nav-bar-wrp"></nav-bar>
     <main>
-        <section id="home">
-            <h2>Welcome to My Website</h2>
-            <p>This is the home page of my website.</p>
+        <section class="hero-sec" id="home">
+            <q class="hero-sec-txt">We are dedicated to creating <b>ambitious</b> and <b>visionary</b> design solutions that reflect our <b style="color: var(--brand-primary-clr);"> passion and independence</b></q>
         </section>
-        <section id="about">
-            <h2>About Us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nibh vitae tincidunt scelerisque, massa nunc aliquet elit, et aliquet nunc nunc at nunc.</p>
+        <section class="section">
+            <div class="container">
+                <div class="img">
+                </div>
+                <div>
+                    <p class="txt-style-2">Kuartist emerged from my desire to work on ambitious projects that challenge me as a designer and spark creativity. But I didn’t want to do this alone—I wanted to create a community that inspires and motivates others to explore new frontiers in design.<br><br>
+                        Kuartist is more than a studio; it’s a place where creativity thrives, and each project is an adventure. Together, we can turn dreams into stunning realities.<br><br>
+                        <b><u>Join us</u> on this journey and let’s create something <span style="color: var(--brand-primary-clr);">amazing</span></b></p>
+                </div>
+        </div>
         </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Email: info@Kuartist.com</p>
-            <p>Phone: 123-456-7890</p>
+        <section class="section">
+            
         </section>
+       
     </main>
-    <footer>
-        &copy; 2024 Kuartist. All rights reserved.
+    <footer class="footer"> <div class="footer-innr-txt">
+        &copy; 2024 Kuartist. All rights reserved.</div>
     </footer>
+    <script src="component-lib/navbar.js"></script>
 </body>
 </html>

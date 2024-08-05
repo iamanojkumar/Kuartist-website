@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuartist</title>
     <link href="style-sheet/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <nav-bar class="nav-bar-wrp"></nav-bar>
     <main>
         <section class="hero-sec" id="home">
-            <q class="hero-sec-txt">We are dedicated to creating <b>ambitious</b> and <b>visionary</b> design solutions that reflect our <b style="color: var(--brand-primary-clr);"> passion and independence</b></q>
+            <q >We are dedicated to creating <b>ambitious</b> and <b>visionary</b> design solutions that reflect our <b style="color: var(--brand-primary-clr);"> passion and independence</b></q>
         </section>
         <section class="section">
             <div class="container">
@@ -23,8 +24,52 @@
                 </div>
         </div>
         </section>
-        <section class="section">
-            
+        <section class="ourService">
+            <h2>Our service</h2>
+            <div class="osl">
+                <div class="oslcol1">
+                    <card-component 
+                icon="devices", 
+                title="Web-Design" 
+                description="Our team has strong skills and expertise in website design. Check out our portfolio to see what best fits your project scope." 
+                link="#" 
+                link-text="See web design projects">
+            </card-component>
+            <card-component 
+                icon="gesture", 
+                title="Graphic Design" 
+                description="Our graphics design team is very good at creating eye catching graphics and is good at meeting short deadlines" 
+                link="#" 
+                link-text="See graphic design projects">
+            </card-component>
+            <card-component 
+                icon="animated_images", 
+                title="Video & Animation" 
+                description="Our team has dwelled into video editing and animation in mediums like 2d and 3d. " 
+                link="#" 
+                link-text="See projects">
+                </card-component>
+                <card-component 
+                icon="deployed_code", 
+                title="3D Art & Design" 
+                description="We use 3d designs elements in various projects like web-design, graphic design and animation" 
+                link="#" 
+                link-text="Check out our 3d design projects">
+                </card-component>
+                </div>
+                <div class="form">
+                    <div class="form-head">
+                        <p class="crd-ttl">Get in touch</p>
+                        <p class="crd-des">Our team has dwelled into video editing and animation in mediums like 2d</p>
+                    </div>
+                    <form class="form-input-wrp">
+                        <input class="frm-inpt" type="text" name="fullname" placeholder="Full name" required>
+                        <input class="frm-inpt" type="email" name="email" placeholder="Email" required>
+                        <textarea class="txt-area" name="message" rows="4" placeholder="How can we help you? Write to us to get access to our current WIP portfolio" required></textarea>
+                    </form>
+                    <button class="frm-smt-btn" type="submit">Submit</button>
+                </div>                
+            </div>
         </section>
        
     </main>
@@ -32,5 +77,6 @@
         &copy; 2024 Kuartist. All rights reserved.</div>
     </footer>
     <script src="component-lib/navbar.js"></script>
+    <script src="component-lib/card.js"></script>
 </body>
 </html>

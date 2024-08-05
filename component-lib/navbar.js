@@ -10,9 +10,8 @@ class Navbar extends HTMLElement {
             <div class="nav-bar">
                 <div class="brand-logo">Kuartist</div>
                     <div class="nav-lnk-lst-wrp">
-                    <a class="nav-lnk-txt-wrp" href="index.html">Home</a>
-                    <a class="nav-lnk-txt-wrp" href="pages/about.html">About Us</a>
-                    <a class="nav-lnk-txt-wrp" href="pages/contact-us.html">Contact Us</a>
+                    <a class="nav-link-txt" href="pages/about.html">About Us</a>
+                    <a class="nav-link-txt" href="pages/contact-us.html">Contact Us</a>
                     </div>
             </div>
         `;
@@ -30,3 +29,4 @@ customElements.define('nav-bar', Navbar);
     <a href="pages/contact-us.html">Contact Us</a>
 </div>
 </header> */}
+{/* <a class="nav-lnk-txt-wrp" href="index.html">Home</a> */}

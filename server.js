@@ -12,7 +12,6 @@ app.use('/component-lib', express.static(path.join(__dirname, 'component-lib')))
 app.use('/Assets', express.static(path.join(__dirname, 'Assets')));
 
 // Use body-parser middleware
-const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve index.html from the root directory

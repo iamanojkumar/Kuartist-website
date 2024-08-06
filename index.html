@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuartist</title>
+    <link rel="icon" type="image/x-icon" href="/Assets/favicon/favicon.png">
     <link href="style-sheet/main.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
@@ -62,20 +63,30 @@
                         <p class="crd-ttl">Get in touch</p>
                         <p class="crd-des">Our team has dwelled into video editing and animation in mediums like 2d</p>
                     </div>
-                    <form class="form-input-wrp">
-                        <input class="frm-inpt" type="text" name="fullname" placeholder="Full name" required>
-                        <input class="frm-inpt" type="email" name="email" placeholder="Email" required>
-                        <textarea class="txt-area" name="message" rows="4" placeholder="How can we help you? Write to us to get access to our current WIP portfolio" required></textarea>
+                    <!-- <form id="contactForm" action="" method="POST" class="form-input-wrp">
+                        <input class="frm-inpt" type="text" name="fullname" id="name" placeholder="Full name" required>
+                        <input class="frm-inpt" id="email" type="email" name="email" placeholder="Email" required>
+                        <textarea id="message" class="txt-area" name="message" rows="4" placeholder="How can we help you? Write to us to get access to our current WIP portfolio" required></textarea>
+                        <button class="frm-smt-btn" type="submit">Submit</button>
+                    </form> -->
+
+                    <form id="contactForm" action="/submit" method="POST" class="form-input-wrp">
+                        <input class="frm-inpt" type="text" name="name" id="name" placeholder="Full name" required>
+                        <input class="frm-inpt" id="email" type="email" name="email" placeholder="Email" required>
+                        <textarea id="message" class="txt-area" name="message" rows="4" placeholder="How can we help you? Write to us to get access to our current WIP portfolio" required></textarea>
+                        <button class="frm-smt-btn" type="submit">Submit</button>
                     </form>
-                    <button class="frm-smt-btn" type="submit">Submit</button>
+                    <div id="toast" class="hidden"></div>
                 </div>                
             </div>
         </section>
        
     </main>
-    <footer class="footer"> <div class="footer-innr-txt">
+    <footer class="footer"> 
+        <div>
         &copy; 2024 Kuartist. All rights reserved.</div>
     </footer>
+    <script src="server.js"></script>
     <script src="component-lib/navbar.js"></script>
     <script src="component-lib/card.js"></script>
 </body>

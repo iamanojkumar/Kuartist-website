@@ -1,7 +1,6 @@
 class CardComponent extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
-            <div class="crd">
                 <div class="crd-head">
                     <div class="crd-title-wrp">
                         <span class="material-symbols-outlined">
@@ -12,7 +11,6 @@ class CardComponent extends HTMLElement {
                 </div>
                 <p class="crd-des">${this.getAttribute('description')}</p>
                 <a href="${this.getAttribute('link')}" class="crd-link">${this.getAttribute('link-text')}</a>
-            </div>
         `;
     }
 }

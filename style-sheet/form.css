@@ -9,6 +9,8 @@ align-self: stretch;
 border-radius: 0.25rem;
 border: 1px solid var(--border-clr-b1);
 background: var(--container-bg-clr);
+min-width: 296px;
+max-width: 100%;
 }
 
 .form-head{

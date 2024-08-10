@@ -1,0 +1,15 @@
+.ptttl{
+    padding: 2rem;
+    width: 100%;
+    text-align: left;
+
+}
+
+.ptimg{
+    width: 100%;
+    height: 520px;
+    margin: 2rem;
+    max-width: 75rem;
+    object-fit: cover;
+    border-radius: .5rem;
+}

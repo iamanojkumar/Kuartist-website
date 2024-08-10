@@ -89,6 +89,25 @@ app.post('/fetch-projects', async (req, res) => {
     }
 });
 
+// New route to fetch a specific project by ID
+app.get('/fetch-project/:id', async (req, res) => {
+    const projectId = req.params.id;
+
+    try {
+        const response = await axios.get(`https://api.notion.com/v1/pages/${projectId}`, {
+            headers: {
+                'Authorization': `Bearer secret_EU6lsUCuIMro9cCy0NE54BJLuE7nkKamQoNUIh3Bgfj`, // Your Notion API token
+                'Notion-Version': '2022-06-28',
+                'Content-Type': 'application/json',
+            },
+        });
+        res.json(response.data); // Send the project data back to the client
+    } catch (error) {
+        console.error('Error fetching project from Notion:', error);
+        res.status(500).send('Error fetching project from Notion');
+    }
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

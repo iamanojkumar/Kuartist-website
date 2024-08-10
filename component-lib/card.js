@@ -52,11 +52,12 @@ function createProjectCard(project) {
     const card = document.createElement('div');
     card.className = 'project-card';
     card.onclick = () => {
-        window.location.href = `pages/project-template.html?id=${project.id}`;
+        window.location.href = `project-template.html?id=${project.id}`;
     };
 
     const img = document.createElement('img');
-    img.src = project.cover ? project.cover.external.url : '/Assets/Image/404-img.png'; // Fallback image
+    // Access the thumbnail URL
+    img.src = project.properties.thumbnail.url || '/Assets/Image/404-img.png'; // Fallback image if URL is not available
     img.alt = project.properties.title.title[0]?.text.content || 'No Title'; // Safe access
 
     const title = document.createElement('h3');
@@ -65,13 +66,9 @@ function createProjectCard(project) {
     const tags = document.createElement('p');
     tags.textContent = project.properties.tag.relation.map(tag => tag.name).join(', ') || 'No Tags'; // Safe access
 
-    const description = document.createElement('p');
-    description.textContent = project.properties.description.rich_text[0]?.text.content || 'No Description'; // Safe access
-
     card.appendChild(img);
     card.appendChild(title);
     card.appendChild(tags);
-    card.appendChild(description);
 
     return card;
 }

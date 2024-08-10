@@ -72,6 +72,7 @@ section{
 
 .hero-sec{
     display: flex;
+    max-width: 75rem;
 max-width: 75rem;
 padding: 7.5rem 2.5rem;
 justify-content: center;
@@ -129,7 +130,7 @@ border: 1px solid var(--border-clr-b1, #EBEBE5);
 background: var(--container-bg-clr, #F8F8F4);
 }
 
-.img{
+.about-img{
     background-image: url("../Assets/Image/boy\ in\ vr.jpeg");
     background-size: cover;
     background-position: center;

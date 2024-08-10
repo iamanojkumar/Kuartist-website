@@ -51,12 +51,21 @@ async function fetchProjects() {
 function createProjectCard(project) {
     const card = document.createElement('div');
     card.className = 'project-card';
+    
+    // Set the correct path based on the current page
+    const isHomePage = window.location.pathname === '/'; // Check if we are on the home page
+    const templatePath = isHomePage ? `pages/project-template.html?id=${project.id}` : `project-template.html?id=${project.id}`;
+
+    console.log('Current Path:', window.location.pathname);
+    console.log('Is Home Page:', isHomePage);
+    console.log('Template Path:', templatePath);
+
     card.onclick = () => {
-        window.location.href = `project-template.html?id=${project.id}`;
+        console.log('Redirecting to:', templatePath); // Log the path
+        window.location.href = templatePath; // Use the determined path
     };
 
     const img = document.createElement('img');
-    // Access the thumbnail URL
     img.src = project.properties.thumbnail.url || '/Assets/Image/404-img.png'; // Fallback image if URL is not available
     img.alt = project.properties.title.title[0]?.text.content || 'No Title'; // Safe access
 
@@ -74,28 +83,38 @@ function createProjectCard(project) {
 }
 
 
-// Function to load projects on page load
+
 async function loadProjects() {
     const projects = await fetchProjects();
 
-    // Log the fetched projects to check their structure
-    console.log('Fetched Projects:', projects); // This will log the entire array of project objects
+    console.log('Fetched Projects:', projects); // Log the entire array of project objects
 
+    // Check for featured projects on the home page
+    const featuredPortfolio = document.getElementById('featured-projects');
+    if (featuredPortfolio) {
+        featuredPortfolio.innerHTML = ''; // Clear existing projects
+
+        projects.forEach(project => {
+            console.log('Project:', project);
+            if (project.properties.feature.checkbox) { // Only create cards for featured projects
+                const card = createProjectCard(project);
+                featuredPortfolio.appendChild(card); // Append the card to the featured projects container
+            }
+        });
+    } 
+
+    // Check for all projects on the projects page
     const portfolio = document.getElementById('portfolio');
+    if (portfolio) {
+        portfolio.innerHTML = ''; // Clear existing projects
 
-    // Check if projects were fetched successfully
-    if (projects.length === 0) {
-        console.log('No projects found.');
-        return; // Exit the function if no projects are found
+        projects.forEach(project => {
+            console.log('Project:', project);
+            const card = createProjectCard(project); // Create a card for each project
+            portfolio.appendChild(card); // Append the card to the portfolio
+        });
     }
-
-    projects.forEach(project => {
-        console.log('Project:', project); // Log each project object
-        const card = createProjectCard(project);
-        portfolio.appendChild(card);
-    });
-    
 }
 
-// Load projects when the window is loaded
-window.onload = loadProjects;
+// Call this function when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', loadProjects);

@@ -71,13 +71,41 @@
                 </div>                
             </div>
         </section>
+        <h2>Projects</h2>
+        <div id="featured-projects" class="project-crd-sec"></div> <!-- Container for featured projects -->
     </main>
     </div>
     <footer class="footer"> 
         <div>
         &copy; 2024 Kuartist. All rights reserved.</div>
     </footer>
-    <script src="server.js"></script>
+
+
+    <!-- <script>
+        async function loadFeaturedProjects() {
+            const projects = await fetchProjects(); // Fetch all projects
+
+            const featuredPortfolio = document.getElementById('featured-projects');
+            if (!featuredPortfolio) {
+                console.error('Featured portfolio element not found!');
+                return; // Exit if the element is not found
+            }
+            featuredPortfolio.innerHTML = ''; // Clear existing projects
+
+            projects.forEach(project => {
+                if (project.properties.feature.checkbox) { // Only show projects where feature is true
+                    const card = createProjectCard(project); // Create a card for each featured project
+                    featuredPortfolio.appendChild(card); // Append the card to the featured projects container
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFeaturedProjects(); // Load featured projects on page load
+        });
+    </script> -->
+   
+
     <script src="component-lib/navbar.js"></script>
     <script src="component-lib/card.js"></script>
 </body>

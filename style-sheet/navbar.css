@@ -3,6 +3,7 @@
 flex-direction: column;
 align-items: center;
 align-self: stretch;
+justify-content: center;
 /* max-width: 75rem; */
 }
 
@@ -13,6 +14,7 @@ padding: 1rem 0.5rem;
 align-items: center;
 gap: 1rem;
 align-self: stretch;
+justify-content: center;
 }
 
 .brand-logo{

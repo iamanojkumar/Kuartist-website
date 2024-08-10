@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style-sheet/main.css">
+    <title>Project Template</title>
+</head>
+<body>
+    <header>
+        <h1 id="project-title">Project Title</h1>
+    </header>
+    <main>
+        <img id="project-image" src="" alt="Project Image">
+        <p id="project-description">Project description goes here.</p>
+    </main>
+    <script>
+        async function loadProject() {
+            const params = new URLSearchParams(window.location.search);
+            const projectId = params.get('id');
+            // Fetch project data from Notion based on the projectId
+            // (This part should be implemented similarly to fetchProjects)
+            // You can store the project data in a variable and display it here
+        }
+
+        window.onload = loadProject;
+    </script>
+</body>
+</html>

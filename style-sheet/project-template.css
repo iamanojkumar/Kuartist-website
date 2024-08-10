@@ -1,15 +1,17 @@
 .ptttl{
-    padding: 2rem;
     width: 100%;
     text-align: left;
-
+    padding-top: 2rem;
 }
 
 .ptimg{
     width: 100%;
+    margin: 2rem 0px;
     height: 520px;
-    margin: 2rem;
-    max-width: 75rem;
     object-fit: cover;
     border-radius: .5rem;
+}
+
+.ptdes{
+    margin-top: 1rem;
 }

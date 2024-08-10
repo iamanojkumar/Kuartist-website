@@ -9,15 +9,17 @@
 </head>
 <body>
     <nav-bar></nav-bar>
+    <div class="max-width">
     <header>
         <h1 id="project-title" class="ptttl">Project Title</h1>
-        <p id="project-description">Project description goes here.</p>
+        <p id="project-description" class="ptdes">Project description goes here.</p>
     </header>
     <main>
         <img id="project-image" src="" alt="Project Image" class="ptimg">
         
         <div id="project-tags"></div> <!-- Container for tags -->
     </main>
+    </div>
     <script>
         async function loadProject() {
             const params = new URLSearchParams(window.location.search);

@@ -10,7 +10,6 @@ border-radius: 0.25rem;
 border: 1px solid var(--border-clr-b1, #EBEBE5);
 background: var(--container-bg-clr);
 max-width: 40%;
-min-width: 296px;
 }
 
 .crd-head{
@@ -56,7 +55,8 @@ align-self: stretch;
     border-radius: 5px;
     margin: 10px;
     /* padding: 15px; */
-    width: 296px;
+    width: 100%;
+    max-width: 372px;
     text-align: left;
     cursor: pointer;
     transition: transform 0.2s; /* Transition for the card */
@@ -68,9 +68,10 @@ align-self: stretch;
     flex-direction: row;
     flex-wrap: wrap;
     align-self: center;
-    justify-content: center;
+    justify-content: left;
     padding: .1rem;
     gap: .5rem;
+    padding-bottom: 4rem;
 }
 
 .project-card:hover {

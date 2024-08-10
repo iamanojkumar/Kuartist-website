@@ -1,6 +1,7 @@
 @import "navbar.css";
 @import "form.css";
 @import "card.css";
+@import "project-template.css";
 
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Spline+Sans:wght@300..700&display=swap');
@@ -60,7 +61,7 @@ body{
     display: flex;
 flex-direction: column;
 align-self: stretch;
-align-items: center;
+justify-content: center;
 background-color: var(--main-bg-clr);
 }
 

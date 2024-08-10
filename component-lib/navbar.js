@@ -5,14 +5,14 @@ class Navbar extends HTMLElement {
         link.href = 'style-sheet/navbar.css';
         document.head.appendChild(link);
         this.innerHTML = `
-            <div class="nav-bar">
-                <div class="brand-logo">Kuartist</div>
-                <div class="nav-lnk-lst-wrp">
-                    <a class="nav-link-txt" href="index.html">Home</a>
-                    <a class="nav-link-txt" href="pages/projects.html">Projects</a>
-                </div>
-            </div>
-        `;
+    <div class="nav-bar">
+        <div class="brand-logo">Kuartist</div>
+        <div class="nav-lnk-lst-wrp">
+            <a class="nav-link-txt" href="/">Home</a>
+            <a class="nav-link-txt" href="/pages/projects.html">Projects</a>
+        </div>
+    </div>
+`;
     }
 }
 

@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style-sheet/main.css">
+    <script src="/component-lib/navbar.js" defer></script>
     <title>Project</title>
 </head>
 <body>
+    <nav-bar></nav-bar>
     <header>
-        <h1 id="project-title">Project Title</h1>
+        <h1 id="project-title" class="ptttl">Project Title</h1>
+        <p id="project-description">Project description goes here.</p>
     </header>
     <main>
-        <img id="project-image" src="" alt="Project Image">
-        <p id="project-description">Project description goes here.</p>
+        <img id="project-image" src="" alt="Project Image" class="ptimg">
+        
         <div id="project-tags"></div> <!-- Container for tags -->
     </main>
     <script>

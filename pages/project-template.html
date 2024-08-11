@@ -10,27 +10,42 @@
 <body>
     <nav-bar></nav-bar>
     <div class="max-width">
-    <header>
-        <h1 id="project-title" class="ptttl">Project Title</h1>
-        <p> <span id="last-edited"></span></p> <!-- New element to display last edited time -->
-        <p id="project-description" class="ptdes">Project description goes here.</p>
-    </header>
-    <main>
-        <img id="project-image" src="" alt="Project Image" class="ptimg">
-        
-        <div id="project-tags"></div> <!-- Container for tags -->
-    </main>
+        <header>
+            <h1 id="project-title" class="ptttl">Project Title</h1>
+            <p><span id="last-edited"></span></p>
+            <p id="project-description" class="ptdes">Project description goes here.</p>
+        </header>
+        <main>
+            <img id="project-image" src="" alt="Project Image" class="ptimg">
+            <div id="project-tags"></div>
+            <div id="project-content"></div>
+        </main>
     </div>
     
     <script>
-        // Function to format the date
         function formatDate(dateString) {
             const date = new Date(dateString);
             return date.toLocaleDateString('en-US', {
-                month: 'short', // 'long' for full month name
+                month: 'short',
                 day: 'numeric',
                 year: 'numeric'
             });
+        }
+
+        async function fetchPageContent(pageId) {
+            const response = await fetch(`/fetch-page/${pageId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error fetching page content: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            return data; // This will be an array of block objects
         }
     
         async function loadProject() {
@@ -38,47 +53,111 @@
             const projectId = params.get('id');
     
             try {
-                const response = await fetch(`/fetch-project/${projectId}`, { // Fetch project data from your server
+                const response = await fetch(`/fetch-project/${projectId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                 });
-    
+
                 if (!response.ok) {
                     throw new Error(`Error fetching project: ${response.statusText}`);
                 }
-    
+
                 const project = await response.json();
-    
+
                 // Update the DOM with project data
-                document.getElementById('project-title').textContent = project.properties.title.title[0]?.text.content || 'Untitled'; // Shows title
-                
-                // Format and display the last edited time
-                const formattedDate = formatDate(project.last_edited_time); // Format the date
-                document.getElementById('last-edited').textContent = `Last Edited: ${formattedDate}`; // Display formatted date
-                
-                document.getElementById('project-image').src = project.properties.thumbnail.url || 'Image/boy in vr.jpeg'; // Fallback image
-                document.getElementById('project-description').textContent = project.properties.description.rich_text[0]?.text.content || 'No description available.'; // Shows description
-    
-                // Display tags
+                document.getElementById('project-title').textContent = project.properties.title.title[0]?.text.content || 'Untitled';
+                const formattedDate = formatDate(project.last_edited_time);
+                document.getElementById('last-edited').textContent = `Last Edited: ${formattedDate}`;
+                document.getElementById('project-image').src = project.properties.thumbnail.url || 'Image/boy in vr.jpeg';
+                document.getElementById('project-description').textContent = project.properties.description.rich_text[0]?.text.content || 'No description available.';
+
                 const tagsContainer = document.getElementById('project-tags');
-                const tags = project.properties.tag.relation; // Accessing the relation tags
+                const tags = project.properties.tag.relation;
                 if (tags.length > 0) {
                     tags.forEach(tag => {
                         const tagElement = document.createElement('span');
-                        tagElement.textContent = tag.name; // Assuming tag has a 'name' property
-                        tagElement.className = 'tag'; // Add a class for styling
+                        tagElement.textContent = tag.name;
+                        tagElement.className = 'tag';
                         tagElement.onclick = (e) => {
-                            e.stopPropagation(); // Prevent card click event
-                            // Redirect to a filtered projects page based on the tag
-                            window.location.href = `projects.html?tag=${tag.id}`; // Assuming you have a way to filter by tag ID
+                            e.stopPropagation();
+                            window.location.href = `projects.html?tag=${tag.id}`;
                         };
                         tagsContainer.appendChild(tagElement);
                     });
                 } else {
-                    tagsContainer.textContent = 'No Tags'; // Fallback if no tags
+                    tagsContainer.textContent = 'No Tags';
                 }
+
+                const pageId = project.id; // Use the project ID to fetch the page content
+                const blocks = await fetchPageContent(pageId); // Fetch page content
+                const contentContainer = document.getElementById('project-content');
+
+                blocks.forEach(block => {
+    console.log(block); // Log the block to inspect its structure
+
+    // Check for paragraph blocks
+    if (block.type === 'paragraph' && block.paragraph.rich_text) {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = block.paragraph.rich_text.map(t => t.text.content).join('');
+        paragraph.className = 'paragraph'; // Optional: add a class for specific styling
+        contentContainer.appendChild(paragraph);
+    } 
+    // Check for heading 1 blocks
+    else if (block.type === 'heading_1' && block.heading_1.rich_text) {
+        const heading = document.createElement('h1');
+        heading.textContent = block.heading_1.rich_text.map(t => t.text.content).join('');
+        heading.className = 'heading-1'; // Optional: add a class for specific styling
+        contentContainer.appendChild(heading);
+    } 
+    // Check for heading 2 blocks
+    else if (block.type === 'heading_2' && block.heading_2.rich_text) {
+        const heading = document.createElement('h2');
+        heading.textContent = block.heading_2.rich_text.map(t => t.text.content).join('');
+        heading.className = 'heading-2'; // Optional: add a class for specific styling
+        contentContainer.appendChild(heading);
+    } 
+    // Check for heading 3 blocks
+    else if (block.type === 'heading_3' && block.heading_3.rich_text) {
+        const heading = document.createElement('h3');
+        heading.textContent = block.heading_3.rich_text.map(t => t.text.content).join('');
+        heading.className = 'heading-3'; // Optional: add a class for specific styling
+        contentContainer.appendChild(heading);
+    } 
+    // Check for image blocks
+    else if (block.type === 'image') {
+        const img = document.createElement('img');
+        img.src = block.image.file.url || block.image.external.url;
+        img.className = 'project-image'; // Optional: add a class for specific styling
+        contentContainer.appendChild(img);
+        
+        // Check for image caption
+        if (block.image.caption && block.image.caption.length > 0) {
+            const caption = document.createElement('p');
+            caption.textContent = block.image.caption.map(c => c.text.content).join('');
+            caption.className = 'image-caption'; // Optional: add a class for specific styling
+            contentContainer.appendChild(caption);
+        }
+    } 
+    // Check for video blocks
+    else if (block.type === 'video') {
+        const video = document.createElement('video');
+        video.src = block.video.external.url;
+        video.controls = true;
+        video.className = 'project-video'; // Optional: add a class for specific styling
+        contentContainer.appendChild(video);
+    } 
+    // Check for embed blocks
+    else if (block.type === 'embed') {
+        const link = document.createElement('a');
+        link.href = block.embed.url;
+        link.textContent = 'Embedded Content';
+        contentContainer.appendChild(link);
+    }
+    // Add more block types as needed
+});
+
     
             } catch (error) {
                 console.error('Error loading project:', error);

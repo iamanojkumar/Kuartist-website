@@ -104,7 +104,7 @@ align-self: stretch;
 border-radius: 0.25rem;
 border: 1px solid var(--border-clr-b1, #EBEBE5);
 background: var(--container-bg-clr, #F8F8F4);
-/* footr-inner-txt */
+/* footer-inner-txt */
 color: var(--txt-tertiary, #979797);
 font-family: "Spline Sans";
 font-size: 0.875rem;

@@ -44,7 +44,7 @@ gap: 0.5rem;
 .nav-link-txt{
     color: var(--txt-primary, #000);
 font-family: "Spline Sans";
-font-size: 1rem;
+font-size: var(--b1);    
 font-style: normal;
 font-weight: 400;
 line-height: normal;

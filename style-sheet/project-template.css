@@ -26,27 +26,27 @@
 /* Heading styles */
 h1 {
     font-size: 2em;
-    color: #333;
+    color: var(--txt-primary, #000);
     margin-bottom: 10px;
 }
 
 h2 {
     font-size: 1.75em;
-    color: #444;
+    color: var(--txt-primary, #000);
     margin-bottom: 8px;
 }
 
 h3 {
     font-size: 1.5em;
-    color: #555;
+    color: var(--txt-primary, #000);
     margin-bottom: 6px;
 }
 
 /* Paragraph styles */
 p {
-    font-size: 1em;
+    font-size: var(--b1, 1.125rem);
     line-height: 1.5;
-    color: #666;
+    color: var(--txt-primary, #000);
     margin-bottom: 10px;
 }
 

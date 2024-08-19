@@ -39,7 +39,7 @@ width: 100%;
 --b1-bold: 600;
 --b1-medium: 500;
 --b1-regular: 350;
-    --b1: 1rem; /* Base font size */
+    --b1: 1.125; /* Base font size */
     --b1-line-height: 1.5rem;
     --b1-letter-spacing: 0.02rem;
 

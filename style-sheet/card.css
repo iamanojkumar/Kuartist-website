@@ -39,7 +39,7 @@ line-height: 1.875rem; /* 150% */
 .crd-des{
     color: var(--txt-secondary, #4C4C4C);
 font-family: "Spline Sans";
-font-size: 1.125rem;
+font-size: var(--b1);
 font-style: normal;
 font-weight: 300;
 line-height: 1.6875rem; /* 150% */

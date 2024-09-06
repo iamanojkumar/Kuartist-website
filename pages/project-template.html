@@ -9,15 +9,16 @@
 </head>
 <body>
     <nav-bar></nav-bar>
-    <div class="max-width">
+    <div class="max-width-content">
         <header>
             <h1 id="project-title" class="ptttl">Project Title</h1>
             <p><span id="last-edited"></span></p>
             <p id="project-description" class="ptdes">Project description goes here.</p>
         </header>
         <main>
-            <img id="project-image" src="" alt="Project Image" class="ptimg">
             <div id="project-tags"></div>
+            <img id="project-image" src="" alt="Project Image" class="ptimg">
+            
             <div id="project-content"></div>
         </main>
     </div>
@@ -87,7 +88,7 @@
                         tagsContainer.appendChild(tagElement);
                     });
                 } else {
-                    tagsContainer.textContent = 'No Tags';
+                    tagsContainer.textContent = 'Project category coming soon';
                 }
 
                 const pageId = project.id; // Use the project ID to fetch the page content

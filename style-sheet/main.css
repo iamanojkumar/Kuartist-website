@@ -2,6 +2,7 @@
 @import "form.css";
 @import "card.css";
 @import "project-template.css";
+@import "grid.css";
 
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Spline+Sans:wght@300..700&display=swap');
@@ -17,6 +18,13 @@ html{
 
 .max-width{
     max-width: 75rem;
+    margin: 0px auto;
+align-self: stretch;
+width: 100%;
+}
+
+.max-width-content{
+    max-width: 52rem;
     margin: 0px auto;
 align-self: stretch;
 width: 100%;
@@ -202,6 +210,5 @@ align-self: stretch;
     display: flex;
     flex-wrap: wrap;
 gap: 1.5rem;
-max-width: 60%;
 }
 

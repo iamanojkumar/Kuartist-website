@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
+const session = require('express-session');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,9 +16,57 @@ app.use('/pages', express.static(path.join(__dirname, 'pages'))); // Serve stati
 app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 app.use(express.json()); // For parsing application/json
 
+// Session management
+app.use(session({
+    secret: 'your-secret-key', // Change this to a strong secret
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Set secure: true if using HTTPS
+}));
+
+// Dummy credentials
+const validEmail = 'admin@example.com'; // Replace with your admin email
+const validPassword = 'password123'; // Replace with your admin password
+
 // Serve index.html from the root directory
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Login route
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pages', 'admin-login.html')); // Serve the login page
+});
+
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+
+    // Check credentials
+    if (email === validEmail && password === validPassword) {
+        req.session.isAuthenticated = true; // Set session variable
+        res.redirect('/dashboard'); // Redirect to the dashboard
+    } else {
+        res.send('<h1>Invalid email or password</h1><a href="/login">Try again</a>');
+    }
+});
+
+// Admin Dashboard route
+app.get('/dashboard', (req, res) => {
+    if (req.session.isAuthenticated) {
+        res.sendFile(path.join(__dirname, 'pages', 'admin-dashboard.html')); // Serve the dashboard page
+    } else {
+        res.redirect('/login'); // Redirect to login if not authenticated
+    }
+});
+
+// Logout route
+app.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.redirect('/dashboard');
+        }
+        res.redirect('/login'); // Redirect to login after logout
+    });
 });
 
 // Handle form submission

@@ -212,3 +212,19 @@ align-self: stretch;
 gap: 1.5rem;
 }
 
+.btn-cta{
+    display: inline-flex;
+padding: 0.625rem;
+justify-content: center;
+align-items: center;
+gap: 0.625rem;
+border-radius: 0.25rem;
+background: var(--brand-primary, #4B9E0E);
+color: var(--main-bg-clr);
+border: 0px;
+}
+
+.btn-cta:hover{
+background: #47970e;
+cursor: pointer;
+}

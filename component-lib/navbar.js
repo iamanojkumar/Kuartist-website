@@ -10,6 +10,7 @@ class Navbar extends HTMLElement {
         <div class="nav-lnk-lst-wrp">
             <a class="nav-link-txt" href="/">Home</a>
             <a class="nav-link-txt" href="/pages/projects.html">Projects</a>
+            <button class="btn-cta" type="button" onclick="window.open('https://forms.zoho.in/kuartist/form/Contact');">Contact Us</button>
         </div>
     </div>
 `;

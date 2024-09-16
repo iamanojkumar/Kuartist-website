@@ -11,6 +11,7 @@ app.use('/style-sheet', express.static(path.join(__dirname, 'style-sheet')));
 app.use('/component-lib', express.static(path.join(__dirname, 'component-lib')));
 app.use('/Assets', express.static(path.join(__dirname, 'Assets')));
 app.use('/pages', express.static(path.join(__dirname, 'pages'))); // Serve static files from the 'pages' directory
+app.use('/js', express.static(path.join(__dirname, 'js'))); // Serve JS files from the 'js' directory
 
 // Use body-parser middleware (Express 4.x has built-in body parsing)
 app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
@@ -25,8 +26,8 @@ app.use(session({
 }));
 
 // Dummy credentials
-const validEmail = 'admin@example.com'; // Replace with your admin email
-const validPassword = 'password123'; // Replace with your admin password
+const validEmail = 'manoj@kuartist.com'; // Replace with your admin email
+const validPassword = 'kuartist9944'; // Replace with your admin password
 
 // Serve index.html from the root directory
 app.get('/', (req, res) => {

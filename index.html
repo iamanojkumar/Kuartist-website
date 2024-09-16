@@ -74,6 +74,21 @@
         &copy; 2024 Kuartist. All rights reserved.</div>
     </footer>   
 
+       <!-- Cookie Consent Popup -->
+       <div id="cookie-popup" class="cookie-popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <div class="tbm-1"><h4>🍪 Cookies</h4></div>
+            <p>We use cookies to enhance your experience on our website. By continuing to browse, you agree to our use of cookies.</p>
+            <div class="cookie-btn-cnt">
+                <button class="btn-cta" id="accept-btn" onclick="acceptCookies()">Accept</button>
+                <button class="secondary-btn" id="reject-btn" onclick="rejectCookies()">Reject</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/cookie.js"></script>
     <script src="component-lib/navbar.js"></script>
     <script src="component-lib/card.js"></script>
 </body>

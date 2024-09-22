@@ -1,15 +1,13 @@
 card-component{
-    display: flex;
-/* width: 18rem; */
-padding: 1.5rem;
-flex-direction: column;
-align-items: flex-start;
-gap: 1.5rem;
-/* flex-shrink: 0; */
-border-radius: 0.25rem;
-border: 1px solid var(--border-clr-b1, #EBEBE5);
-background: var(--container-bg-clr);
-/* max-width: 41%; */
+    padding: 1.5rem;
+    gap: 1.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--border-clr-b1, #EBEBE5);
+    background: var(--container-bg-clr);
+    display: flex; /* Center content */
+    flex-direction: column; /* Stack child items vertically */
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Center vertically */
 }
 
 .crd-head{

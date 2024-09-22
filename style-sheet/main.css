@@ -2,7 +2,6 @@
 @import "form.css";
 @import "card.css";
 @import "project-template.css";
-@import "grid.css";
 @import "cookie.css";
 
 
@@ -15,6 +14,10 @@ html{
    scrollbar-color: var(--main-bg-clr) var(--main-bg-clr);
    scroll-behavior: smooth !important;
    margin: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+
 }
 
 .max-width{
@@ -51,7 +54,6 @@ width: 100%;
     --b1: 1.125; /* Base font size */
     --b1-line-height: 1.5rem;
     --b1-letter-spacing: 0.02rem;
-
 }
 
 *{
@@ -100,6 +102,9 @@ flex-direction: column;
 align-self: stretch;
 justify-content: center;
 background-color: var(--main-bg-clr);
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
 }
 
 section{
@@ -109,8 +114,7 @@ section{
 }
 
 .hero-sec{
-    display: flex;
-    max-width: 75rem;
+display: flex;
 max-width: 75rem;
 padding: 7.5rem 2.5rem;
 justify-content: center;
@@ -121,7 +125,7 @@ color: var(--txt-primary, #000);
 font-family: "Spline Sans";
 font-size: 2.75rem;
 font-style: normal;
-font-weight: 360;
+font-weight: normal;
 line-height: 4.125rem; /* 150% */
 }
 
@@ -207,11 +211,13 @@ gap: 2rem;
 align-self: stretch;
 }
 
-.osl{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: stretch;
+.service-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+    grid-template-rows: repeat(2, 1fr); /* Creates 2 rows */
+    gap: 1.5rem; /* Space between grid items */
+    width: 100%; /* Full width of the container */
+    height: 100vh; /* Full height of the viewport */
 }
 
 .oslcol1{
@@ -256,4 +262,21 @@ border: 0px;
 .tbm-1{
     margin-top: .5rem;
     margin-bottom: 1rem;
+}
+
+.grid-container{   
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+    grid-template-rows: repeat(2, 1fr); /* Creates 2 rows */
+    gap: 1.5rem; /* Space between grid items */
+    width: 100%; /* Full width of the container */
+    height: auto; /* Full height of the viewport */
+}
+
+/* Media Query for Mobile Breakpoint */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr); /* Change to single column on mobile */
+        grid-template-rows: auto; /* Adjust rows to auto height */
+    }
 }

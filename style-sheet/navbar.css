@@ -1,51 +1,65 @@
-.nav-bar-wrp{
-    display: flex;
-flex-direction: column;
-align-self: stretch;
-justify-content: center;
-}
-
-.nav-bar{
-    width: 100%;
+.nav-bar {
+    /* width: 100%; */
     display: flex;
     max-width: 75rem;
-padding: 1rem 0.5rem;
-align-items: center;
-gap: 1rem;
-align-self: stretch;
-margin: 0px auto;
+    padding: 1rem;
+    align-items: center;
+    gap: 1rem;
+    align-self: stretch;
+    margin: 0px auto;
+    justify-content: space-between;
 }
 
-.brand-logo{
+.brand-logo {
     color: var(--txt-primary, #000);
     font-family: "Spline Sans";
     font-size: 2rem;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
 }
 
-.nav-lnk-lst-wrp{
-    display: flex;
-justify-content: flex-end;
-align-items: center;
-gap: 1rem;
-flex: 1 0 0;
+.nav-lnk-lst-wrp {
+    display: flex; /* Default to flex for desktop */
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    flex: 1 0 0;
 }
 
-.nav-lnk-txt-wrp{
-    display: flex;
-padding: 0.5rem 0.5rem 0rem 0.5rem;
-justify-content: center;
-align-items: center;
-gap: 0.5rem;
+/* Hide nav links by default on mobile */
+#nav-links {
+    /* display: flex; Default to flex for desktop */
 }
 
-.nav-link-txt{
-    color: var(--txt-primary, #000);
-font-family: "Spline Sans";
-font-size: var(--b1);    
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+/* Hamburger icon styling */
+.hamburger {
+    display: none; /* Hidden by default */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .nav-lnk-lst-wrp {
+        display: none; /* Hide links initially on mobile */
+        flex-direction: column; /* Stack links vertically */
+        position: absolute; /* Positioning for dropdown effect */
+        top: 64px; /* Adjust based on your navbar height */
+        right: 0; /* Align to the right */
+        background-color: rgba(255, 255, 255, 0.75); /* Background color for dropdown */
+        backdrop-filter: blur(5px);
+        width: 85%; /* Full width of screen */
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1); /* Optional shadow effect */
+        z-index: 1000; /* Ensure it appears above other content */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .nav-lnk-lst-wrp.active {
+        display: flex; /* Show links when active */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger icon on mobile */
+        font-size: 2rem; /* Adjust size as needed */
+    }
 }

@@ -1,0 +1,34 @@
+- .DS_Store
+- Assets
+  - .DS_Store
+  - Image
+    - 404-img.png
+    - boy in vr.jpeg
+  - favicon
+    - favicon.png
+    - logo-light.svg
+    - truefan-logo-white.svg
+- README.md
+- component-lib
+  - card.js
+  - navbar.js
+- index.html
+- js
+  - cookie.js
+- package-lock.json
+- package.json
+- pages
+  - about.html
+  - admin-dashboard.html
+  - admin-login.html
+  - contact-us.html
+  - project-template.html
+  - projects.html
+- server.js
+- style-sheet
+  - card.css
+  - cookie.css
+  - form.css
+  - main.css
+  - navbar.css
+  - project-template.css

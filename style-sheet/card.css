@@ -54,7 +54,7 @@ align-self: stretch;
     margin: 10px;
     /* padding: 15px; */
     width: 100%;
-    max-width: 372px;
+    max-width: 352px;
     text-align: left;
     cursor: pointer;
     transition: transform 0.2s; /* Transition for the card */
@@ -67,7 +67,7 @@ align-self: stretch;
     flex-wrap: wrap;
     align-self: center;
     justify-content: left;
-    padding: .1rem;
+    padding: 1rem;
     gap: .5rem;
     padding-bottom: 4rem;
 }

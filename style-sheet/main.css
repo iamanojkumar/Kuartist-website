@@ -24,7 +24,6 @@ html{
     max-width: 75rem;
     margin: 0px auto;
 align-self: stretch;
-width: 100%;
 }
 
 .max-width-content{
@@ -108,7 +107,7 @@ background-color: var(--main-bg-clr);
 }
 
 section{
-    padding: 2rem;
+    padding: 1rem;
     flex-direction: row;
     gap: 1rem;
 }
@@ -279,4 +278,19 @@ border: 0px;
         grid-template-columns: repeat(1, 1fr); /* Change to single column on mobile */
         grid-template-rows: auto; /* Adjust rows to auto height */
     }
+    .hero-sec{
+        display: flex;
+        max-width: 75rem;
+        padding: 5rem 2.5rem;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        align-self: stretch;
+        color: var(--txt-primary, #000);
+        font-family: "Spline Sans";
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 3rem; /* 150% */
+        }
 }

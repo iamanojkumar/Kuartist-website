@@ -5,8 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style-sheet/main.css">
     <script src="/component-lib/navbar.js" defer></script>
-    <title>Project</title>
+    <title id="seo-title">Project</title> <!-- Set an ID for dynamic title -->
     <link rel="icon" type="image/x-icon" href="/Assets/favicon/favicon.png">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" id="meta-description" content="Project description goes here."> <!-- Set an ID for dynamic description -->
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" id="og-title" content="Project Title"> <!-- Set an ID for dynamic Open Graph title -->
+    <meta property="og:description" id="og-description" content="Project description goes here."> <!-- Set an ID for dynamic Open Graph description -->
+    <meta property="og:image" id="og-image" content=""> <!-- Set an ID for dynamic Open Graph image -->
+
+    <!-- Site Search Settings -->
+    <meta name="search_title" id="search-title" content=""> <!-- Set an ID for dynamic search title -->
+    <meta name="search_description" id="search-description" content=""> <!-- Set an ID for dynamic search description -->
+    <meta name="search_image" id="search-image" content=""> <!-- Set an ID for dynamic search image -->
 </head>
 <body>
     <nav-bar></nav-bar>
@@ -76,6 +89,23 @@
 
                 // Update the DOM with project data
                 document.getElementById('project-title').textContent = project.properties.title.title[0]?.text.content || 'Untitled';
+
+ // Update SEO elements
+ const projectDescription = project.properties.description.rich_text[0]?.text.content || 'No description available.';
+        const projectImageUrl = project.properties.thumbnail.url || 'Image/boy in vr.jpeg';
+
+        // Set SEO title and meta tags
+        document.getElementById('seo-title').textContent = document.getElementById('project-title').textContent; // SEO Title
+        document.getElementById('meta-description').setAttribute('content', projectDescription); // Meta Description
+        document.getElementById('og-title').setAttribute('content', document.getElementById('project-title').textContent); // Open Graph Title
+        document.getElementById('og-description').setAttribute('content', projectDescription); // Open Graph Description
+        document.getElementById('og-image').setAttribute('content', projectImageUrl); // Open Graph Image
+
+        // Site Search Settings
+        document.getElementById('search-title').setAttribute('content', document.getElementById('project-title').textContent); // Search Title
+        document.getElementById('search-description').setAttribute('content', projectDescription); // Search Description
+        document.getElementById('search-image').setAttribute('content', projectImageUrl); // Search Image
+
                 const formattedDate = formatDate(project.last_edited_time);
                 document.getElementById('last-edited').textContent = `Last Edited: ${formattedDate}`;
                 document.getElementById('project-image').src = project.properties.thumbnail.url || 'Image/boy in vr.jpeg';

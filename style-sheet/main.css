@@ -5,6 +5,25 @@
 @import "cookie.css";
 
 
+/* Preloader CSS */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var( --main-bg-clr); /* Background color */
+    z-index: 9999; /* Ensure it's on top */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lottie-animation {
+    width: 200px; /* Adjust size as needed */
+    height: 200px; /* Adjust size as needed */
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Spline+Sans:wght@300..700&display=swap');
 
 html{

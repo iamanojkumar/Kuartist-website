@@ -10,7 +10,6 @@ class CardComponent extends HTMLElement {
                     </div>
                 </div>
                 <p class="crd-des">${this.getAttribute('description')}</p>
-                <a href="${this.getAttribute('link')}" class="crd-link">${this.getAttribute('link-text')}</a>
         `;
     }
 }
@@ -72,16 +71,58 @@ function createProjectCard(project) {
     const title = document.createElement('h3');
     title.textContent = project.properties.title.title[0]?.text.content || 'Untitled'; // Safe access
 
-    const tags = document.createElement('p');
-    tags.textContent = project.properties.tag.relation.map(tag => tag.name).join(', ') || 'No Tags'; // Safe access
+    const tagsContainer = document.createElement('p'); // Create a container for tags
 
-    card.appendChild(img);
-    card.appendChild(title);
-    card.appendChild(tags);
+    // Accessing the tag property
+    const tagValue = project.properties.tag; // Accessing the tag property
+    
+    // Check if tagValue exists and contains rich_text
+    if (tagValue && tagValue.rich_text && tagValue.rich_text.length > 0) {
+        // Extract the content from rich_text
+        const tagsText = tagValue.rich_text.map(tag => tag.plain_text).join(', ');
+        tagsContainer.textContent = tagsText; // Use the joined string
+    } else {
+        tagsContainer.textContent = 'No Tags'; // Fallback text
+    }
 
-    return card;
-}
+   // Create hover text element
+   const hoverText = document.createElement('div');
+   hoverText.className = 'hover-text';
+   hoverText.textContent = 'Read Case Study';
+   
+   // Append elements to card
+   card.appendChild(img);
+   card.appendChild(title);
+   card.appendChild(tagsContainer); // Append tags container
+   card.appendChild(hoverText); // Append hover text
 
+   // Positioning logic for hover text
+   card.addEventListener('mousemove', (e) => {
+      const offsetX = 0; // Reduced offset X to bring text closer to cursor
+      const offsetY = 0; // Reduced offset Y to bring text closer to cursor
+      hoverText.style.left = `${e.pageX + offsetX}px`; // Update left position
+      hoverText.style.top = `${e.pageY + offsetY}px`; // Update top position
+      
+   });
+
+   card.addEventListener('mouseenter', () => {
+      hoverText.style.display = 'block'; // Show text on hover
+      hoverText.classList.add('scale-up'); // Add class for scaling effect
+      
+   });
+
+   card.addEventListener('mouseleave', () => {
+      hoverText.classList.remove('scale-up'); // Remove class for scaling effect
+      
+      setTimeout(() => {
+          hoverText.style.display = 'none'; // Hide text after scaling out
+        
+      }, 300); // Match this timeout with your CSS transition duration
+      
+      
+   });
+
+return card;}
 
 
 async function loadProjects() {

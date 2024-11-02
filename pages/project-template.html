@@ -112,21 +112,34 @@
                 document.getElementById('project-description').textContent = project.properties.description.rich_text[0]?.text.content || 'No description available.';
 
                 const tagsContainer = document.getElementById('project-tags');
-                const tags = project.properties.tag.relation;
-                if (tags.length > 0) {
-                    tags.forEach(tag => {
-                        const tagElement = document.createElement('span');
-                        tagElement.textContent = tag.name;
-                        tagElement.className = 'tag';
-                        tagElement.onclick = (e) => {
-                            e.stopPropagation();
-                            window.location.href = `projects.html?tag=${tag.id}`;
-                        };
-                        tagsContainer.appendChild(tagElement);
-                    });
-                } else {
-                    tagsContainer.textContent = 'Project category coming soon';
-                }
+
+// Assuming tag is now a single text field or an array of strings
+const tags = project.properties.tag; // Change this line based on how 'tag' is structured
+
+// Check if tags is an array or a single string
+if (Array.isArray(tags) && tags.length > 0) {
+    tags.forEach(tag => {
+        const tagElement = document.createElement('span');
+        tagElement.textContent = tag; // Directly use the tag string
+        tagElement.className = 'tag';
+        tagElement.onclick = (e) => {
+            e.stopPropagation();
+            window.location.href = `projects.html?tag=${encodeURIComponent(tag)}`; // Use encodeURIComponent for safety
+        };
+        tagsContainer.appendChild(tagElement);
+    });
+} else if (typeof tags === 'string' && tags.trim() !== '') {
+    const tagElement = document.createElement('span');
+    tagElement.textContent = tags; // Use the single string directly
+    tagElement.className = 'tag';
+    tagElement.onclick = (e) => {
+        e.stopPropagation();
+        window.location.href = `projects.html?tag=${encodeURIComponent(tags)}`; // Use encodeURIComponent for safety
+    };
+    tagsContainer.appendChild(tagElement);
+} else {
+    tagsContainer.textContent = 'Project category coming soon';
+}
 
                 const pageId = project.id; // Use the project ID to fetch the page content
                 const blocks = await fetchPageContent(pageId); // Fetch page content

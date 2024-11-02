@@ -49,7 +49,7 @@ width: 100%;
 --b1-bold: 600;
 --b1-medium: 500;
 --b1-regular: 350;
-    --b1: 1.125; /* Base font size */
+    --b1: 1.9; /* Base font size */
     --b1-line-height: 1.5rem;
     --b1-letter-spacing: 0.02rem;
 }
@@ -63,7 +63,7 @@ width: 100%;
 h1{
     font-family: "Spline Sans", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 600;
+    font-weight: 500;
     font-style: normal;
 }
 h2{
@@ -284,7 +284,7 @@ border: 0px;
 .grid-container{   
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
-    grid-template-rows: repeat(2, 1fr); /* Creates 2 rows */
+    grid-template-rows: repeat(1, 1fr); /* Creates 2 rows */
     gap: 1.5rem; /* Space between grid items */
     width: 100%; /* Full width of the container */
     height: auto; /* Full height of the viewport */

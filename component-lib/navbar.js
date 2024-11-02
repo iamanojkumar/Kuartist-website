@@ -6,7 +6,7 @@ class Navbar extends HTMLElement {
         document.head.appendChild(link);
         this.innerHTML = `
             <div class="nav-bar">
-                <div class="brand-logo">Kũartist</div>
+                <a href="https://www.kuartist.com" class="brand-logo">Kũartist</a>
                 <div class="hamburger" id="hamburger">&#9776;</div>
                 <div class="nav-lnk-lst-wrp" id="nav-links">
                     <a class="nav-link-txt" href="/">Home</a>

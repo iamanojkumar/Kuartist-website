@@ -49,10 +49,10 @@ h3 {
 
 /* Paragraph styles */
 p {
-    font-size: var(--b1, 1.125rem);
+    font-size: 1.9rem;
     line-height: 1.5;
     color: var(--txt-primary, #000);
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 /* Image styles */

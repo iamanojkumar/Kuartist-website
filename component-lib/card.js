@@ -68,7 +68,7 @@ function createProjectCard(project) {
     img.src = project.properties.thumbnail.url || '/Assets/Image/404-img.png'; // Fallback image if URL is not available
     img.alt = project.properties.title.title[0]?.text.content || 'No Title'; // Safe access
 
-    const title = document.createElement('h3');
+    const title = document.createElement('h4');
     title.textContent = project.properties.title.title[0]?.text.content || 'Untitled'; // Safe access
 
     const tagsContainer = document.createElement('p'); // Create a container for tags
@@ -84,43 +84,12 @@ function createProjectCard(project) {
     } else {
         tagsContainer.textContent = 'No Tags'; // Fallback text
     }
-
-   // Create hover text element
-   const hoverText = document.createElement('div');
-   hoverText.className = 'hover-text';
-   hoverText.textContent = 'Read Case Study';
    
    // Append elements to card
    card.appendChild(img);
    card.appendChild(title);
    card.appendChild(tagsContainer); // Append tags container
-   card.appendChild(hoverText); // Append hover text
 
-   // Positioning logic for hover text
-   card.addEventListener('mousemove', (e) => {
-      const offsetX = 0; // Reduced offset X to bring text closer to cursor
-      const offsetY = 0; // Reduced offset Y to bring text closer to cursor
-      hoverText.style.left = `${e.pageX + offsetX}px`; // Update left position
-      hoverText.style.top = `${e.pageY + offsetY}px`; // Update top position
-      
-   });
-
-   card.addEventListener('mouseenter', () => {
-      hoverText.style.display = 'block'; // Show text on hover
-      hoverText.classList.add('scale-up'); // Add class for scaling effect
-      
-   });
-
-   card.addEventListener('mouseleave', () => {
-      hoverText.classList.remove('scale-up'); // Remove class for scaling effect
-      
-      setTimeout(() => {
-          hoverText.style.display = 'none'; // Hide text after scaling out
-        
-      }, 300); // Match this timeout with your CSS transition duration
-      
-      
-   });
 
 return card;}
 

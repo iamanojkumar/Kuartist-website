@@ -12,9 +12,11 @@
 
 .brand-logo {
     color: var(--txt-primary, #000);
-    font-family: "Spline Sans";
-    font-size: 1.8rem;
-    font-weight: 500;
+    font-family: "Roboto Flex", sans-serif;
+  font-size: 2rem;
+  font-optical-sizing: auto;
+  font-weight: 720;
+  font-style: normal;
 }
 
 .nav-lnk-lst-wrp {

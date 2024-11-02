@@ -2,9 +2,17 @@ const express = require('express');
 const path = require('path');
 const axios = require('axios');
 const session = require('express-session');
+const cors = require('cors'); // Importing CORS
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Use CORS middleware
+app.use(cors({
+    origin: '*', // Allow all origins or specify allowed domains
+    methods: ['GET', 'POST', 'OPTIONS'], // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+}));
 
 // Serve static files
 app.use('/style-sheet', express.static(path.join(__dirname, 'style-sheet')));

@@ -10,7 +10,6 @@ class CardComponent extends HTMLElement {
                     </div>
                 </div>
                 <p class="crd-des">${this.getAttribute('description')}</p>
-                <a href="${this.getAttribute('link')}" class="crd-link">${this.getAttribute('link-text')}</a>
         `;
     }
 }
@@ -69,19 +68,30 @@ function createProjectCard(project) {
     img.src = project.properties.thumbnail.url || '/Assets/Image/404-img.png'; // Fallback image if URL is not available
     img.alt = project.properties.title.title[0]?.text.content || 'No Title'; // Safe access
 
-    const title = document.createElement('h3');
+    const title = document.createElement('h4');
     title.textContent = project.properties.title.title[0]?.text.content || 'Untitled'; // Safe access
 
-    const tags = document.createElement('p');
-    tags.textContent = project.properties.tag.relation.map(tag => tag.name).join(', ') || 'No Tags'; // Safe access
+    const tagsContainer = document.createElement('p'); // Create a container for tags
 
-    card.appendChild(img);
-    card.appendChild(title);
-    card.appendChild(tags);
+    // Accessing the tag property
+    const tagValue = project.properties.tag; // Accessing the tag property
+    
+    // Check if tagValue exists and contains rich_text
+    if (tagValue && tagValue.rich_text && tagValue.rich_text.length > 0) {
+        // Extract the content from rich_text
+        const tagsText = tagValue.rich_text.map(tag => tag.plain_text).join(', ');
+        tagsContainer.textContent = tagsText; // Use the joined string
+    } else {
+        tagsContainer.textContent = 'No Tags'; // Fallback text
+    }
+   
+   // Append elements to card
+   card.appendChild(img);
+   card.appendChild(title);
+   card.appendChild(tagsContainer); // Append tags container
 
-    return card;
-}
 
+return card;}
 
 
 async function loadProjects() {

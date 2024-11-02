@@ -8,6 +8,9 @@
     - favicon.png
     - logo-light.svg
     - truefan-logo-white.svg
+  - loading animation
+    - preloader-animation.json
+  - webclip.png
 - README.md
 - component-lib
   - card.js
@@ -15,6 +18,7 @@
 - index.html
 - js
   - cookie.js
+  - lottie-animation.js
 - package-lock.json
 - package.json
 - pages
@@ -24,6 +28,7 @@
   - contact-us.html
   - project-template.html
   - projects.html
+- project_structure.text
 - server.js
 - style-sheet
   - card.css

@@ -1,0 +1,35 @@
+.filter-buttons {
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: 1px solid #000;
+    color: #020303;
+    border: none;
+    border-radius: 5px;
+}
+
+.filter-btn:hover {
+    background-color: #040605;
+    color: white;
+}
+
+.project-crd-sec {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.project {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    width: calc(25% - 40px); /* Adjust width as needed */
+}
+
+.hidden {
+    display: none; /* Class to hide elements */
+}

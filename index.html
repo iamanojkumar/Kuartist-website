@@ -7,6 +7,43 @@
       name="google-site-verification"
       content="nPR4qf8n7OFJkB0e8oAdlu8F7wSie__kf7EkwAiCkUs"
     />
+
+<!-- Add this in the <head> section -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Kuartist",
+  "description": "Digital Design Studio",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "231/91 a, arcot road, Am.puram, perumugai",
+    "addressLocality": "Vellore",
+    "postalCode": "632009",
+    "addressRegion": "TN",
+    "addressCountry": "India"
+  }
+}
+</script>
+
+
+    <!-- Add this in the <head> section -->
+    <link rel="canonical" href="https://kuartist.com/" />
+    
+    <!-- Add these in the <head> section -->
+    <meta name="description" content="Kuartist - A digital design studio specializing in creating stunning digital experiences for businesses and individuals in India">
+    <meta name="keywords" content="digital design, UI/UX, web design, India, creative studio">
+    <meta name="author" content="Kuartist">
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Kũartist-Digital Design Studio">
+    <meta property="og:description" content="Professional digital design services for businesses and individuals">
+    <meta property="og:image" content="[URL to your logo/featured image]">
+    <meta property="og:url" content="[Your website URL]">
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kũartist-Digital Design Studio">
+    <meta name="twitter:description" content="Professional digital design services for businesses and individuals">
+    
     <title>Kũartist-Digital Design Studio</title>
     <link rel="icon" type="image/x-icon" href="/Assets/favicon/favicon.png" />
     <link rel="apple-touch-icon" sizes="256x256" href="Assets/webclip.png" />
@@ -45,6 +82,25 @@
           </p>
         </section>
 
+<!-- What we do -->
+<section>
+  <h2 style="margin-top: 1.5rem;">What we do?</h2>
+  <div class="two-col-grid">
+      <a href="your-link-here.html"> <!-- Replace with your target link -->
+          <div class="clickable-div">
+              <div class="background-image"></div> <!-- Default background image -->
+              <img src="/Assets/Image/placeholder/ph1.png" alt="Background GIF" class="background-gif"> <!-- Replace with your GIF file -->
+          </div>
+      </a>
+      <a href="your-link-here.html"> <!-- Replace with your target link -->
+          <div class="clickable-div">
+              <div class="background-image"></div> <!-- Default background image -->
+              <img src="Assets/Image/placeholder/ph2.png" alt="Background GIF" class="background-gif"> <!-- Replace with your GIF file -->
+          </div>
+      </a>
+        </div>
+</section>
+
         <!-- Live -->
         <section>
           <h2>Projects</h2>
@@ -75,27 +131,8 @@
                 </div>
         </section>
 
-<!-- What we do -->
-<section>
-    <h2 style="margin-left: 1rem; margin-top: 1.5rem;">What we do?</h2>
-    <div class="two-col-grid">
-        <a href="your-link-here.html"> <!-- Replace with your target link -->
-            <div class="clickable-div">
-                <div class="background-image"></div> <!-- Default background image -->
-                <img src="/Assets/Image/placeholder/ph1.png" alt="Background GIF" class="background-gif"> <!-- Replace with your GIF file -->
-            </div>
-        </a>
-        <a href="your-link-here.html"> <!-- Replace with your target link -->
-            <div class="clickable-div">
-                <div class="background-image"></div> <!-- Default background image -->
-                <img src="Assets/Image/placeholder/ph2.png" alt="Background GIF" class="background-gif"> <!-- Replace with your GIF file -->
-            </div>
-        </a>
-          </div>
-  </section>
-
   <!-- CTA -->
-  <section style="padding-top: 0px;">
+  <section>
     <img style="width: 100%; height: auto; margin: 0px;" src="/Assets/Image/placeholder/ph3.png" alt="CTA">
    </section>
 
@@ -115,32 +152,11 @@
         </div>
     </div> -->
 
-    <!-- footer -->
-    <footer class="footer-container">
-        <div class="footer-section">
-            <h2 class="footer-heading">Küartist - The Creative Digital Design Studio</h2>
-            <p class="footer-subtext">We are a group of talented freelance digital designers based out in India. We specialize in creating visually stunning and engaging digital experiences for businesses and individuals.</p>
-            <p class="footer-subtext">Address - 231/91 a, arcot road, Am.puram, perumugai, vellore - 632009 TN, India</p>
-        </div>
-        
-        <div class="footer-lnk-grp">
-        <div class="footer-section">
-            <h3 class="footer-link-title">Company</h3>
-            <a href="#" class="footer-link">Home</a>
-            <a href="#" class="footer-link">Projects</a>
-            <a href="#" class="footer-link">Shots</a>
-            <a href="#" class="footer-link">About us</a>
-        </div>
-        
-        <div class="footer-section">
-            <h3 class="footer-link-title">Legal</h3>
-            <a href="#" class="footer-link">Privacy policy</a>
-            <a href="#" class="footer-link">Terms of use</a>
-            <a href="#" class="footer-link">Cookie policy</a>
-        </div>
-    </div>
-    </footer>
 
+    <!-- footer -->
+    <footer-component></footer-component>
+
+    <script src="component-lib/footer.js"></script>
     <script src="js/lottie-animation.js"></script>
     <!-- <script src="js/cookie.js"></script> -->
     <script src="component-lib/navbar.js"></script>

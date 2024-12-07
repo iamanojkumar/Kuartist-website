@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /pages/admin-login.html
+Disallow: /pages/admin-dashboard.html
+Sitemap: https://kuartist.com/sitemap.xml

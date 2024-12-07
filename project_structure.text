@@ -2,23 +2,40 @@
 - Assets
   - .DS_Store
   - Image
+    - .DS_Store
     - 404-img.png
     - boy in vr.jpeg
+    - clients
+      - .DS_Store
+      - client-1.png
+      - client-2.png
+      - client-3.png
+      - client-4.png
+    - extra
+      - rainbow-grad.png
+    - placeholder
+      - ph1.png
+      - ph2.png
+      - ph3.png
   - favicon
     - favicon.png
     - logo-light.svg
     - truefan-logo-white.svg
   - loading animation
     - preloader-animation.json
+  - video
+    - placeholder.mp4
   - webclip.png
 - README.md
 - component-lib
   - card.js
   - navbar.js
+- generate-sitemap.js
 - index.html
 - js
   - cookie.js
   - lottie-animation.js
+  - notion-response.js
 - package-lock.json
 - package.json
 - pages
@@ -29,11 +46,15 @@
   - project-template.html
   - projects.html
 - project_structure.text
+- robots.txt
 - server.js
+- sitemap.xml
 - style-sheet
   - card.css
   - cookie.css
+  - footer.css
   - form.css
+  - grid.css
   - main.css
   - navbar.css
   - project-template.css

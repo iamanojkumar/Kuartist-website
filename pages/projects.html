@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuartist Portfolio</title>
     <link rel="icon" type="image/x-icon" href="/Assets/favicon/favicon.png">
-    <link rel="stylesheet" href="/style-sheet/main.css"> <!-- Adjusted path -->
+    <link rel="stylesheet" href="/style-sheet/main.css">
+    <link rel="stylesheet" href="/style-sheet/minor-features.css"> <!-- Adjusted path -->
     <script src="/component-lib/card.js" defer></script> <!-- Adjusted path -->
     <script src="/component-lib/navbar.js" defer></script> <!-- Adjusted path -->
 </head>
 <body>
     <nav-bar></nav-bar>
+<section>
+    <div class="filter-buttons, max-width">
+        <button class="filter-btn" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="website">Website</button>
+        <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+    </div>
+</section>
+
     <section>
     <div class="max-width">
     <main id="portfolio" class="project-crd-sec">
@@ -18,5 +27,10 @@
     </main>
     </div>
     </section>  
+    <footer-component></footer-component>
+
+    <!-- Include your JavaScript file -->
+    <script src="../component-lib/footer.js"></script>
+    <script src="../js/filter.js"></script>
 </body>
 </html>

@@ -25,17 +25,17 @@ class FooterComponent extends HTMLElement {
                 <div class="footer-lnk-grp">
                     <div class="footer-section">
                         <h3 class="footer-link-title">Company</h3>
-                        <a href="/home" class="footer-link">Home</a>
-                        <a href="/projects" class="footer-link">Projects</a>
-                        <a href="/shots" class="footer-link">Shots</a>
-                        <a href="/about" class="footer-link">About us</a>
+                        <a href="/" class="footer-link">Home</a>
+                        <a href="/pages/projects.html" class="footer-link">Projects</a>
+                        <a href="/pages/about" class="footer-link">About us</a>
+                        <a href="/pages/exp/playground.html" class="footer-link">Playground</a>
                     </div>
                     
                     <div class="footer-section">
                         <h3 class="footer-link-title">Legal</h3>
-                        <a href="/privacy" class="footer-link">Privacy policy</a>
-                        <a href="/terms" class="footer-link">Terms of use</a>
-                        <a href="/cookie-policy" class="footer-link">Cookie policy</a>
+                        <a href="/pages/legal/privacy-policy.html" class="footer-link">Privacy policy</a>
+                        <a href="/pages/legal/terms-of-service.html" class="footer-link">Terms of service</a>
+                        <a href="/pages/legal/cookie-policy.html" class="footer-link">Cookie policy</a>
                     </div>
                 </div>
             </footer>

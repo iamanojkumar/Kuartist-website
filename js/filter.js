@@ -1,55 +1,31 @@
-// Sample data for projects
-const projectsData = [
-    { title: "Project 1", category: "website" },
-    { title: "Project 2", category: "graphic" },
-    { title: "Project 3", category: "website" },
-    { title: "Project 4", category: "graphic" },
-];
+document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
 
-// Function to render projects
-function renderProjects() {
-    const portfolio = document.getElementById('portfolio');
-    
-    // Clear existing projects
-    portfolio.innerHTML = '';
-
-    // Create project cards based on data
-    projectsData.forEach(project => {
-        const projectCard = document.createElement('div');
-        projectCard.className = 'project';
-        projectCard.setAttribute('data-category', project.category);
-        projectCard.innerText = project.title;
-
-        portfolio.appendChild(projectCard);
-    });
-}
-
-// Function to filter projects
-function filterProjects(filter) {
-    const projects = document.querySelectorAll('.project');
-
-    projects.forEach(project => {
-        if (filter === 'all' || project.getAttribute('data-category') === filter) {
-            project.classList.remove('hidden');
-        } else {
-            project.classList.add('hidden');
-        }
-    });
-}
-
-// Event listeners for filter buttons
-document.querySelectorAll('.filter-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        const filter = button.getAttribute('data-filter');
-        
-        // Filter projects based on selected category
-        filterProjects(filter);
-        
-        // Highlight active button
-        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            const filterValue = button.getAttribute('data-filter');
+            
+            projectCards.forEach(card => {
+                if (filterValue === 'all') {
+                    card.style.display = 'block';
+                    // Optional: Add animation class
+                    card.classList.add('fade-in');
+                } else {
+                    if (card.dataset.category === filterValue) {
+                        card.style.display = 'block';
+                        card.classList.add('fade-in');
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('fade-in');
+                    }
+                }
+            });
+        });
     });
 });
-
-// Initial rendering of projects
-renderProjects();

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Three.js Playground</title>
+    <link href="/style-sheet/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav-bar class="nav-bar-wrp"></nav-bar>
+    <section class="max-width">
+    <main>
+      <div id="container3D"></div>
+    </main>
+  </section>
+    <footer-component></footer-component>
+    
+    <script src="/component-lib/footer.js"></script>
+    <script src="/component-lib/navbar.js"></script>
+       
+    <script type="importmap">
+      {
+          "imports": {
+              "three": "/node_modules/three/build/three.module.js",
+              "three/addons/": "/node_modules/three/examples/jsm/"
+          }
+      }
+      </script>
+      <script type="module" src="/js/playground.js"></script>
+    <script type="module" src="/js/playground.js"></script>
+  </body>
+</html>

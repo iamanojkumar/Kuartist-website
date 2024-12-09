@@ -10,7 +10,7 @@ class Navbar extends HTMLElement {
                 <div class="hamburger" id="hamburger">&#9776;</div>
                 <div class="nav-lnk-lst-wrp" id="nav-links">
                     <a class="nav-link-txt" href="/pages/projects.html">Projects</a>
-                    <button class="btn-cta" type="button" onclick="window.open('https://forms.zohopublic.in/kuartist/form/Contact/formperma/5qV-E1KQCzdys84bmA-qKmmf3ANvjwQnCJYJvCSvTB0');">Contact Us</button>
+                    <button class="btn-cta" type="button" onclick="window.open('https://forms.zohopublic.in/kuartist/form/Contactdetails/formperma/3JmQ9SKisg_iPNpZ9-XnxD06XBt5IY1kbn35muDcRO0');">Contact Us</button>
                 </div>
             </div>
         `;

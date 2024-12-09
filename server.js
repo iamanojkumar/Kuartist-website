@@ -15,11 +15,20 @@ app.use(cors({
 }));
 
 // Serve static files
+
+// Serve static files from the root directory
+app.use(express.static(path.join(__dirname)));
+
 app.use('/style-sheet', express.static(path.join(__dirname, 'style-sheet')));
 app.use('/component-lib', express.static(path.join(__dirname, 'component-lib')));
 app.use('/Assets', express.static(path.join(__dirname, 'Assets')));
 app.use('/pages', express.static(path.join(__dirname, 'pages'))); // Serve static files from the 'pages' directory
 app.use('/js', express.static(path.join(__dirname, 'js'))); // Serve JS files from the 'js' directory
+// footer
+app.use('/exp', express.static(path.join(__dirname, 'exp')));
+
+// node modules
+app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 
 // Use body-parser middleware (Express 4.x has built-in body parsing)
 app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded

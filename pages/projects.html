@@ -12,11 +12,18 @@
 </head>
 <body>
     <nav-bar></nav-bar>
-<section>
-    <div class="filter-buttons, max-width">
-        <button class="filter-btn" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="website">Website</button>
-        <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+<section class="max-width">
+    <div class="filter-sort-container">
+        <select id="filter-select">
+            <option value="all">All</option>
+            <option value="website">Website</option>
+            <option value="graphic">Graphic Design</option>
+        </select>
+
+        <select id="sort-select">
+            <option value="date">Sort by Date</option>
+            <option value="name">Sort by Name</option>
+        </select>
     </div>
 </section>
 

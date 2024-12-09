@@ -5,7 +5,8 @@
 @import "cookie.css";
 @import "footer.css";
 @import "grid.css";
-@import "minor-features"; 
+@import "minor-features.css"; 
+@import "playground.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Spline+Sans:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Spline+Sans:wght@300..700&display=swap");

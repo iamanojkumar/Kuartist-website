@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kuartist Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="/Assets/favicon/favicon.png">
-    <link rel="stylesheet" href="/style-sheet/main.css">
-    <link rel="stylesheet" href="/style-sheet/minor-features.css"> <!-- Adjusted path -->
-    <script src="/component-lib/card.js" defer></script> <!-- Adjusted path -->
-    <script src="/component-lib/navbar.js" defer></script> <!-- Adjusted path -->
-</head>
-<body>
-    <nav-bar></nav-bar>
-<section class="max-width">
-    <div class="filter-sort-container">
-        <select id="filter-select">
-            <option value="all">All</option>
-            <option value="website">Website</option>
-            <option value="graphic">Graphic Design</option>
-        </select>
+    <link rel="icon" type="image/x-icon" href="/Assets/favicon/favicon.png" />
+    <link rel="stylesheet" href="/style-sheet/main.css" />
+    <link rel="stylesheet" href="/style-sheet/minor-features.css" />
+    <!-- Adjusted path -->
+    <script src="/component-lib/card.js" defer></script>
+    <!-- Adjusted path -->
+    <script src="/component-lib/navbar.js" defer></script>
+    <!-- Adjusted path 
+    -->
 
-        <select id="sort-select">
-            <option value="date">Sort by Date</option>
-            <option value="name">Sort by Name</option>
-        </select>
-    </div>
-</section>
+    <!-- gsap -->
+  </head>
+  <body>
+        <nav-bar></nav-bar>
+        <section class="max-width">
+          <div class="filter-sort-container">
+            <select id="filter-select">
+              <option value="all">All</option>
+              <option value="website">Website</option>
+              <option value="graphic">Graphic Design</option>
+            </select>
 
-    <section>
-    <div class="max-width">
-    <main id="portfolio" class="project-crd-sec">
-        <!-- Project cards will be dynamically added here -->
-    </main>
-    </div>
-    </section>  
-    <footer-component></footer-component>
+            <select id="sort-select">
+              <option value="date">Sort by Date</option>
+              <option value="name">Sort by Name</option>
+            </select>
+          </div>
+        </section>
+
+        <section>
+          <div class="max-width">
+            <main id="portfolio" class="project-crd-sec">
+              <!-- Project cards will be dynamically added here -->
+            </main>
+          </div>
+        </section>
+        <footer-component></footer-component>
 
     <!-- Include your JavaScript file -->
+
+
     <script src="../component-lib/footer.js"></script>
     <script src="../js/filter.js"></script>
-</body>
+  </body>
 </html>

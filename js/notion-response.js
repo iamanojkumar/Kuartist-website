@@ -33,6 +33,13 @@ async function loadProject() {
         document.getElementById("project-image").src = projectImageUrl;
         document.getElementById("project-description").textContent = projectDescription;
 
+         // Fetch and apply background color
+         const backgroundColor = project.properties.background_color; // Assuming this is how you access it
+         if (backgroundColor && backgroundColor.rich_text.length > 0) {
+             // Apply background color to the section with class 'project-template-bg-clr'
+             document.querySelector('.project-template-bg-clr').style.backgroundColor = backgroundColor.rich_text[0].plain_text; // Apply background color
+         }
+
         const pageId = project.id; // Use the project ID to fetch the page content
         const blocks = await fetchPageContent(pageId); // Fetch page content
         const contentContainer = document.getElementById("project-content");

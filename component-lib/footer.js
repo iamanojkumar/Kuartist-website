@@ -17,9 +17,6 @@ class FooterComponent extends HTMLElement {
                         We specialize in creating visually stunning and engaging digital experiences 
                         for businesses and individuals.
                     </p>
-                    <p class="footer-subtext">
-                        Address - 231/91 a, arcot road, Am.puram, perumugai, vellore - 632009 TN, India
-                    </p>
                 </div>
                 
                 <div class="footer-lnk-grp">

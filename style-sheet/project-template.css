@@ -3,6 +3,10 @@
     text-align: left;
 }
 
+.project-template-bg-clr{
+    overflow: hidden;
+}
+
 .ptimg{
     width: 100%;
     margin: 2rem 0px;

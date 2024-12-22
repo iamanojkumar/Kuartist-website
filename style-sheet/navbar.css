@@ -8,6 +8,12 @@
     align-self: stretch;
     margin: 0px auto;
     justify-content: space-between;
+    opacity: 0; /* Start fully transparent */
+    transition: opacity 0.5s ease-in; /* Transition effect */
+}
+
+.nav-bar.fade-in {
+    opacity: 1; /* Fully opaque when the class is added */
 }
 
 .brand-logo {

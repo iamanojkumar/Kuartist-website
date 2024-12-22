@@ -5,7 +5,7 @@ class Navbar extends HTMLElement {
         link.href = '/style-sheet/navbar.css';
         document.head.appendChild(link);
         this.innerHTML = `
-            <div class="nav-bar">
+            <div class="nav-bar" id="nav-bar">
                 <a href="/" class="brand-logo">Kũ</a>
                 <div class="hamburger" id="hamburger">&#9776;</div>
                 <div class="nav-lnk-lst-wrp" id="nav-links">
@@ -20,6 +20,12 @@ class Navbar extends HTMLElement {
             const navLinks = this.querySelector('#nav-links');
             navLinks.classList.toggle('active'); // Toggle 'active' class
         });
+
+        // Trigger fade-in effect
+        setTimeout(() => {
+            const navBar = this.querySelector('#nav-bar');
+            navBar.classList.add('fade-in'); // Add fade-in class after a short delay
+        }, 100); // Delay to ensure the element is rendered before applying the class
     }
 }
 

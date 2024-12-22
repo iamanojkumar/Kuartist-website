@@ -11,6 +11,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Spline+Sans:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Spline+Sans:wght@300..700&display=swap");
 
+
 /* gsap */
 #smooth-wrapper {
   overflow: hidden;
@@ -28,6 +29,17 @@
   width: 100%;
   /* Set min-height if needed */
   min-height: 100vh;
+}
+
+.stagger-text {
+  opacity: 1; /* Ensure the main text is visible */
+  transform: translateY(0); /* Reset translation */
+}
+
+.stagger-text .char {
+  display: inline-block; /* Ensure each character is treated as a block for animation */
+  opacity: 0; /* Start hidden for animation */
+  transform: translateY(20px); /* Move down slightly for animation */
 }
 
 html {
@@ -93,7 +105,6 @@ video {
   width: 100%; /* Full width of the container */
   height: 100%; /* Full height of the container */
   object-fit: cover; /* Cover the container without distortion */
-  border-radius: 15px;
 }
 
 /* what we do css */
@@ -206,6 +217,22 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.hro-txt {
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 350;
+  font-family: "Spline Sans", serif;
+  margin-top: 9rem;
+  margin-bottom: 9rem;
+}
+
+.hro-txt .char {
+  display: inline-block; /* Ensure each character is treated as a block for animation */
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start slightly below */
+}
+
 
 .lottie-animation {
   width: 100px; /* Adjust size as needed */
@@ -334,7 +361,7 @@ align-items: center; */
   align-items: center;
   gap: 0.625rem;
   border-radius: 0.25rem;
-  background: rgb(88, 125, 70);
+  background: var(--brand-primary-clr);
   color: var(--main-bg-clr);
   border: 0px;
 }

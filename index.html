@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="nPR4qf8n7OFJkB0e8oAdlu8F7wSie__kf7EkwAiCkUs" />
 
+<!-- gsap  -->
+<script src="https://unpkg.com/split-type"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+
   <!-- Add this in the <head> section -->
   <script type="application/ld+json">
 {
@@ -61,24 +66,21 @@
   <nav-bar class="nav-bar-wrp"></nav-bar>
     <main>
 
-      <!-- Hero video -->
-      <!-- <section>
-            <div class="video-container">
-                <video style="width: 100%; height: auto; object-fit: fill;" autoplay muted loop>
-                    <source src="/Assets/video/placeholder.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-          </section> -->
 
       <!-- About -->
       <section class="max-width">
-        <h2>About Kuartist</h2>
-        <p style="max-width: 620px">
-          Kuartist is a group of talented freelance digital designers based out in India. We specialize in creating
-          visually stunning and engaging digital experiences for businesses and individuals.
+        <p class="hro-txt stagger-text">
+          We are creative designers. <br>We help companies with design & development 
         </p>
       </section>
+
+             <!-- Hero video -->
+        <!-- <div class="video-container">
+            <video style="width: 100%; height: auto; object-fit: fill;" autoplay muted loop>
+                <source  src="/Assets/video/placeholder.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div> -->
 
       <!-- Our clients -->
       <!-- <section class="g-bg">
@@ -109,9 +111,9 @@
 
 
       <!-- Projects -->
-      <section style="background-color: rgb(241, 243, 240);">
+      <section class="load" style="background-color: rgb(241, 243, 240);">
         <div class="max-width">
-        <h2>Projects</h2>
+        <h2 class="stagger-text">Projects</h2>
         <div id="featured-projects" class="project-crd-sec"></div>
         <!-- Container for featured projects -->
       </div>
@@ -148,6 +150,7 @@
       <!-- <script src="js/cookie.js"></script> -->
       <script src="component-lib/navbar.js"></script>
       <script src="component-lib/card.js"></script>
+      <script src="js/stagger-animation.js"></script>
 </body>
 
 </html>

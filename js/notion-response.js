@@ -40,6 +40,9 @@ async function loadProject() {
              document.querySelector('.project-template-bg-clr').style.backgroundColor = backgroundColor.rich_text[0].plain_text; // Apply background color
          }
 
+                 // Insert Google Analytics Tag Code
+        insertGoogleAnalytics();
+
         const pageId = project.id; // Use the project ID to fetch the page content
         const blocks = await fetchPageContent(pageId); // Fetch page content
         const contentContainer = document.getElementById("project-content");
@@ -123,6 +126,24 @@ async function loadProject() {
         console.error("Error loading project:", error);
         document.getElementById("project-description").textContent = "Error loading project data.";
     }
+}
+
+// Function to insert Google Analytics tag
+function insertGoogleAnalytics() {
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = "https://www.googletagmanager.com/gtag/js?id=G-5P0RBVR15S";
+    
+    const script2 = document.createElement('script');
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5P0RBVR15S');
+    `;
+    
+    document.head.appendChild(script1);
+    document.head.appendChild(script2);
 }
 
 // Helper function to create text blocks with formatting

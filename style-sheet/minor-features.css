@@ -2,19 +2,42 @@
     margin-bottom: 20px;
 }
 
-.filter-btn {
+.select {
+    width: 128px;
+    -webkit-appearance: none !important;
+-moz-appearance: none !important;
     padding: 10px 15px;
     margin-right: 10px;
     cursor: pointer;
-    border: 1px solid #000;
+    border: 1px solid #E2E2E2;
     color: #020303;
-    border: none;
     border-radius: 5px;
+    background-color: #FAFAFA;
+    /* border-right: 16px solid transparent; */
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
+    background-position: 100%;
+background-repeat: no-repeat;
+background-size: 24px;
 }
 
-.filter-btn:hover {
-    background-color: #040605;
-    color: white;
+.select-txt:hover{
+    background-color: none;
+    border-color: none;
+    outline-color: none;
+    border: 0px solid rgba(242, 242, 242, 0.00);
+    -webkit-appearance: none; /* For Chrome/Safari */
+    -moz-appearance: none; /* For Firefox */
+    appearance: none; /* Standard property */
+}
+
+.select:hover {
+    background-color: #F2F2F2;
+    color: black;
+}
+
+.select:focus-visible {
+    outline-color: lightblue;
+
 }
 
 .project-crd-sec {

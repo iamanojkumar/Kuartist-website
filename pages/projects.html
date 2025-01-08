@@ -6,6 +6,7 @@
     <title>Kuartist Portfolio</title>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5P0RBVR15S"></script>
+<script src="../meta/head-template.js"> </script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -30,13 +31,15 @@
         <nav-bar></nav-bar>
         <section class="max-width">
           <div class="filter-sort-container">
-            <select id="filter-select">
+            <select class="select" id="filter-select">
               <option value="all">All</option>
               <option value="website">Website</option>
               <option value="graphic">Graphic Design</option>
+              <option value="resource">Resource</option>
+              <option value="developement">Development</option>
             </select>
 
-            <select id="sort-select">
+            <select class="select" id="sort-select">
               <option value="date">Sort by Date</option>
               <option value="name">Sort by Name</option>
             </select>

@@ -12,11 +12,14 @@ class Navbar extends HTMLElement {
                 <a class="nav-link-txt" href="/pages/resource/resource.html">Prototype</a>
                     <a class="nav-link-txt" href="/pages/projects.html">Projects</a>
                     
-                    <button class="btn-cta" type="button" onclick="window.open('https://forms.zohopublic.in/kuartist/form/Contactdetails/formperma/3JmQ9SKisg_iPNpZ9-XnxD06XBt5IY1kbn35muDcRO0');">Contact Us</button>
+                    
                 </div>
             </div>
         `;
 
+        // temp add this back later
+        // <button class="btn-cta" type="button" onclick="window.open('https://forms.zohopublic.in/kuartist/form/Contactdetails/formperma/3JmQ9SKisg_iPNpZ9-XnxD06XBt5IY1kbn35muDcRO0');">Contact Us</button>
+        
         // Add event listener for the hamburger menu
         this.querySelector('#hamburger').addEventListener('click', () => {
             const navLinks = this.querySelector('#nav-links');

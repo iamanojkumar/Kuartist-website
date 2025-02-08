@@ -24,7 +24,7 @@ class FooterComponent extends HTMLElement {
                         <h3 class="footer-link-title stagger-text">Company</h3>
                         <a href="/" class="footer-link stagger-text">Home</a>
                         <a href="/pages/projects.html" class="footer-link stagger-text">Projects</a>
-                        <a href="/pages/about" class="footer-link stagger-text">About us</a>
+                        <a href="/pages/about.html" class="footer-link stagger-text">About us</a>
                         <a href="/pages/exp/playground.html" class="footer-link stagger-text">Playground</a>
                     </div>
                     

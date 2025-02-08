@@ -106,16 +106,27 @@ async function loadProject() {
                         }
                         
                         break;
-                    case "video":
-                        const video = document.createElement("video");
-                        video.src = block.video.external.url;
-                        video.controls = true; // Allow user to control video playback
-                        video.className = "project-video"; // Optional styling
-                        contentContainer.appendChild(video);
-                        break;
-                    default:
-                      console.log(`Unsupported block type: ${block.type}`);
-                      break;
+                        case "video":
+                            const video = document.createElement("video");
+                            video.src = block.video.external.url; // Ensure this URL is valid
+                            video.controls = true; // Allow user to control playback
+                            video.className = "project-video"; // Optional styling
+                            video.style.width = "100%"; // Make responsive
+                            video.style.height = "auto"; // Maintain aspect ratio
+                        
+                            // Error handling for loading issues
+                            video.onerror = function() {
+                                console.error("Failed to load video:", block.video.external.url);
+                                const errorMessage = document.createElement("p");
+                                errorMessage.textContent = "Error loading video.";
+                                contentContainer.appendChild(errorMessage);
+                            };
+                        
+                            contentContainer.appendChild(video);
+                            break;
+                        default:
+                            console.log(`Unsupported block type: ${block.type}`);
+                            break;
                 }
             });
         } else {

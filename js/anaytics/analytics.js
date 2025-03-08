@@ -37,7 +37,7 @@ function getVisitorId() {
 }
 
 // Send visitor info to backend
-fetch('/api/track-visit', {
+fetch('https://kuartist.com/api/track-visit', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'

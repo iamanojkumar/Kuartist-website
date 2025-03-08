@@ -175,6 +175,10 @@ app.get('/fetch-project/:id', async (req, res) => {
     }
 });
 
+
+
+//Analytics code
+
 // New route to fetch page content by ID
 app.get('/fetch-page/:id', async (req, res) => {
     const pageId = req.params.id;
@@ -193,6 +197,77 @@ app.get('/fetch-page/:id', async (req, res) => {
         res.status(500).send('Error fetching page content from Notion');
     }
 });
+
+// Route to track visitor data
+app.post('/api/track-visit', async (req, res) => {
+    const visitorData = req.body;
+
+    // Prepare data for Notion
+    const notionData = {
+        parent: { database_id: '1b06229e914080ed8de4db37e1673ef6' }, // Your analytics database ID
+        properties: {
+            'Visitor ID': { // Use the exact property name from your Notion database
+                title: [
+                    {
+                        text: {
+                            content: visitorData.visitorId
+                        }
+                    }
+                ]
+            },
+            'Device Info': { // Use the exact property name from your Notion database
+                rich_text: [
+                    {
+                        text: {
+                            content: visitorData.deviceInfo
+                        }
+                    }
+                ]
+            },
+            'Screen Size': { // Use the exact property name from your Notion database
+                rich_text: [
+                    {
+                        text: {
+                            content: visitorData.screenSize
+                        }
+                    }
+                ]
+            },
+            'Visit Time': { // Use the exact property name from your Notion database
+                rich_text: [
+                    {
+                        text: {
+                            content: visitorData.visitTime
+                        }
+                    }
+                ]
+            }
+        }
+    };
+
+    // Alternative approach for rich_text properties
+    notionData.properties['Device Info'].rich_text = [{ text: { content: visitorData.deviceInfo } }];
+    notionData.properties['Screen Size'].rich_text = [{ text: { content: visitorData.screenSize } }];
+    notionData.properties['Visit Time'].rich_text = [{ text: { content: visitorData.visitTime } }];
+
+    try {
+        // Send data to Notion
+        await axios.post('https://api.notion.com/v1/pages', notionData, {
+            headers: {
+                'Authorization': `Bearer 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`, // Your Notion API token
+                'Content-Type': 'application/json',
+                'Notion-Version': '2022-06-28' // Use the latest version
+            }
+        });
+        console.log('Visitor data submitted to Notion:', visitorData);
+        res.send({ message: 'Visitor data saved successfully' });
+    } catch (error) {
+        console.error('Error submitting to Notion:', error.response ? error.response.data : error.message);
+        res.status(500).send({ message: 'Error submitting visitor data to Notion' });
+    }
+});
+
+
 
 // Start the server
 app.listen(PORT, () => {

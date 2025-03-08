@@ -1,10 +1,14 @@
 /* styles.css */
-body {
+body{
     background-image: url('https://www.home-designing.com/wp-content/uploads/2022/03/round-rug-4.jpg');
     font-family: 'Montserrat', sans-serif;
     background-size:     cover;  
     background-repeat:   no-repeat;
     background-position: center center;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
   }
   
   * {
@@ -22,8 +26,6 @@ overflow: hidden;
 }
 
   .crd-wrp{
-    width: 100vw;
-    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;

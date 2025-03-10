@@ -179,65 +179,46 @@ app.get('/fetch-project/:id', async (req, res) => {
 
 //Analytics code
 
-// New route to fetch page content by ID
-app.get('/fetch-page/:id', async (req, res) => {
-    const pageId = req.params.id;
-
-    try {
-        const response = await axios.get(`https://api.notion.com/v1/blocks/${pageId}/children`, {
-            headers: {
-                'Authorization': `Bearer secret_EU6lsUCuIMro9cCy0NE54BJLuE7nkKamQoNUIh3Bgfj`, // Your Notion API token
-                'Notion-Version': '2022-06-28',
-                'Content-Type': 'application/json',
-            },
-        });
-        res.json(response.data.results); // Send the page content back to the client
-    } catch (error) {
-        console.error('Error fetching page content from Notion:', error);
-        res.status(500).send('Error fetching page content from Notion');
-    }
-});
-
 // Route to track visitor data
 app.post('/api/track-visit', async (req, res) => {
+    console.log('Received visitor data:', req.body); // Log the incoming visitor data
+
     const visitorData = req.body;
 
     // Prepare data for Notion
     const notionData = {
         parent: { database_id: '1b06229e914080ed8de4db37e1673ef6' }, // Your analytics database ID
         properties: {
-            'Visitor ID': { // Use the exact property name from your Notion database
+            'Visitor ID': { 
                 title: [
-                    {
-                        text: {
-                            content: visitorData.visitorId
-                        }
-                    }
+                    { text: { content: visitorData.visitorId } }
                 ]
             },
-            'Device Info': { // Use the exact property name from your Notion database
+            'Device Info': { 
+                rich_text: [
+                    { text: { content: visitorData.deviceInfo } }
+                ]
+            },
+            'Screen Size': { 
+                rich_text: [
+                    { text: { content: visitorData.screenSize } }
+                ]
+            },
+            'Visit Time': { 
+                rich_text: [
+                    { text: { content: visitorData.visitTime } }
+                ]
+            },
+            'Referrer': { 
+                rich_text: [
+                    { text: { content: visitorData.referrer || '' } }
+                ]
+            },
+            'Location': { 
                 rich_text: [
                     {
                         text: {
-                            content: visitorData.deviceInfo
-                        }
-                    }
-                ]
-            },
-            'Screen Size': { // Use the exact property name from your Notion database
-                rich_text: [
-                    {
-                        text: {
-                            content: visitorData.screenSize
-                        }
-                    }
-                ]
-            },
-            'Visit Time': { // Use the exact property name from your Notion database
-                rich_text: [
-                    {
-                        text: {
-                            content: visitorData.visitTime
+                            content: visitorData.location || ''
                         }
                     }
                 ]
@@ -245,27 +226,35 @@ app.post('/api/track-visit', async (req, res) => {
         }
     };
 
-    // Alternative approach for rich_text properties
-    notionData.properties['Device Info'].rich_text = [{ text: { content: visitorData.deviceInfo } }];
-    notionData.properties['Screen Size'].rich_text = [{ text: { content: visitorData.screenSize } }];
-    notionData.properties['Visit Time'].rich_text = [{ text: { content: visitorData.visitTime } }];
+    console.log('Notion data prepared:', notionData); // Log the prepared Notion data
 
     try {
         // Send data to Notion
-        await axios.post('https://api.notion.com/v1/pages', notionData, {
+        const response = await axios.post('https://api.notion.com/v1/pages', notionData, {
             headers: {
                 'Authorization': `Bearer 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`, // Your Notion API token
                 'Content-Type': 'application/json',
                 'Notion-Version': '2022-06-28' // Use the latest version
             }
         });
+
+        console.log('Response from Notion:', response.data); // Log the response from Notion
+
+        if (response.data.object === 'page' && response.data.id) {
+            console.log('Page created successfully:', response.data.id);
+        } else {
+            console.error('Failed to create page in Notion:', response.data);
+        }
+
         console.log('Visitor data submitted to Notion:', visitorData);
         res.send({ message: 'Visitor data saved successfully' });
+        
     } catch (error) {
         console.error('Error submitting to Notion:', error.response ? error.response.data : error.message);
         res.status(500).send({ message: 'Error submitting visitor data to Notion' });
     }
 });
+
 
 
 

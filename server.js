@@ -1,137 +1,159 @@
-const express = require('express');
-const path = require('path');
-const axios = require('axios');
-const session = require('express-session');
-const cors = require('cors'); // Importing CORS
+/**
+ * Main server file for the application
+ */
+
+import express from 'express';
+import path from 'path';
+import session from 'express-session';
+import axios from 'axios';
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { NOTION_CONFIG, API_ENDPOINTS } from './js/config.js';
+
+// Initialize dotenv
+dotenv.config();
+
+// Get __dirname equivalent in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// Use CORS middleware
-app.use(cors({
-    origin: '*', // Allow all origins or specify allowed domains
-    methods: ['GET', 'POST', 'OPTIONS'], // Allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-}));
-
-// Serve static files
-
-// Serve static files from the root directory
+// Middleware
+app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
-app.use('/style-sheet', express.static(path.join(__dirname, 'style-sheet')));
-app.use('/component-lib', express.static(path.join(__dirname, 'component-lib')));
-app.use('/Assets', express.static(path.join(__dirname, 'Assets')));
-app.use('/pages', express.static(path.join(__dirname, 'pages'))); // Serve static files from the 'pages' directory
-app.use('/js', express.static(path.join(__dirname, 'js'))); // Serve JS files from the 'js' directory
-// footer
-app.use('/exp', express.static(path.join(__dirname, 'exp')));
+// Add CORS middleware
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    
+    next();
+});
 
-// node modules
-app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
-
-// Use body-parser middleware (Express 4.x has built-in body parsing)
-app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
-app.use(express.json()); // For parsing application/json
-
-// Session management
 app.use(session({
-    secret: 'your-secret-key', // Change this to a strong secret
+    secret: process.env.SESSION_SECRET || 'your-secret-key',
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false } // Set secure: true if using HTTPS
+    saveUninitialized: false
 }));
 
-// Dummy credentials
-const validEmail = 'manoj@kuartist.com'; // Replace with your admin email
-const validPassword = 'kuartist9944'; // Replace with your admin password
+/**
+ * Common headers for Notion API requests
+ */
+const NOTION_HEADERS = {
+    'Authorization': `Bearer ${NOTION_CONFIG.API_TOKEN}`,
+    'Notion-Version': NOTION_CONFIG.API_VERSION,
+    'Content-Type': 'application/json'
+};
 
-// Serve index.html from the root directory
+// Routes
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Login route
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pages', 'about.html'));
+});
+
+app.get('/contact-us', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pages', 'contact-us.html'));
+});
+
+app.get('/projects', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pages', 'projects.html'));
+});
+
+// Routes for individual project pages
+app.get('/project', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pages', 'project-template.html'));
+});
+
+// Admin routes
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages', 'admin-login.html')); // Serve the login page
+    res.sendFile(path.join(__dirname, 'pages', 'admin-login.html'));
 });
 
-app.post('/login', (req, res) => {
-    const { email, password } = req.body;
-
-    // Check credentials
-    if (email === validEmail && password === validPassword) {
-        req.session.isAuthenticated = true; // Set session variable
-        res.redirect('/dashboard'); // Redirect to the dashboard
-    } else {
-        res.send('<h1>Invalid email or password</h1><a href="/login">Try again</a>');
-    }
-});
-
-// Admin Dashboard route
 app.get('/dashboard', (req, res) => {
     if (req.session.isAuthenticated) {
-        res.sendFile(path.join(__dirname, 'pages', 'admin-dashboard.html')); // Serve the dashboard page
+        res.sendFile(path.join(__dirname, 'pages', 'admin-dashboard.html'));
     } else {
-        res.redirect('/login'); // Redirect to login if not authenticated
+        res.redirect('/login');
     }
 });
 
-// Logout route
-app.post('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            return res.redirect('/dashboard');
-        }
-        res.redirect('/login'); // Redirect to login after logout
-    });
+// API Routes
+app.post('/fetch-projects', async (req, res) => {
+    try {
+        const response = await axios.post(
+            `${API_ENDPOINTS.NOTION.BASE_URL}${API_ENDPOINTS.NOTION.DATABASES}/${NOTION_CONFIG.DATABASES.PROJECTS}/query`,
+            {},
+            { headers: NOTION_HEADERS }
+        );
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error fetching projects from Notion:', error);
+        res.status(500).send('Error fetching projects from Notion');
+    }
 });
 
-// Handle form submission
+app.get('/fetch-project/:id', async (req, res) => {
+    try {
+        const response = await axios.get(
+            `${API_ENDPOINTS.NOTION.BASE_URL}${API_ENDPOINTS.NOTION.PAGES}/${req.params.id}`,
+            { headers: NOTION_HEADERS }
+        );
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error fetching project from Notion:', error);
+        res.status(500).send('Error fetching project from Notion');
+    }
+});
+
+app.get('/fetch-page/:pageId', async (req, res) => {
+    try {
+        const response = await axios.get(
+            `${API_ENDPOINTS.NOTION.BASE_URL}${API_ENDPOINTS.NOTION.BLOCKS}/${req.params.pageId}/children`,
+            { headers: NOTION_HEADERS }
+        );
+        res.json(response.data.results);
+    } catch (error) {
+        console.error('Error fetching page content from Notion:', error);
+        res.status(500).send('Error fetching page content from Notion');
+    }
+});
+
+// Contact form submission
 app.post('/submit', async (req, res) => {
     const formData = req.body;
-    console.log('Form Data:', formData); 
-
-    // Prepare data for Notion
-    const notionData = {
-        parent: { database_id: 'e40af1dba4be4b40b93a95a5eb662f45' }, // Replace with your database ID
-        properties: {
-            'Name': { // Use the exact property name from your Notion database
-                title: [
-                    {
-                        text: {
-                            content: formData.name // The name from the form
-                        }
-                    }
-                ]
-            },
-            'Email': { // Use the exact property name from your Notion database
-                email: formData.email // The email from the form
-            },
-            'Message': { // Use the exact property name from your Notion database
-                rich_text: [
-                    {
-                        text: {
-                            content: formData.message // The message from the form
-                        }
-                    }
-                ]
-            }
-        }
-    };
-
-    console.log('Notion Data:', notionData); // Log the data being sent to Notion
-
+    
     try {
-        // Send data to Notion
-        await axios.post('https://api.notion.com/v1/pages', notionData, {
-            headers: {
-                'Authorization': `Bearer secret_EU6lsUCuIMro9cCy0NE54BJLuE7nkKamQoNUIh3Bgfj`, // Replace with your API token
-                'Content-Type': 'application/json',
-                'Notion-Version': '2022-06-28' // Use the latest version
+        const notionData = {
+            parent: { database_id: NOTION_CONFIG.DATABASES.CONTACT },
+            properties: {
+                'Name': {
+                    title: [{ text: { content: formData.name } }]
+                },
+                'Email': {
+                    email: formData.email
+                },
+                'Message': {
+                    rich_text: [{ text: { content: formData.message } }]
+                }
             }
-        });
-        console.log('Data submitted to Notion:', formData);
+        };
+
+        await axios.post(
+            `${API_ENDPOINTS.NOTION.BASE_URL}${API_ENDPOINTS.NOTION.PAGES}`,
+            notionData,
+            { headers: NOTION_HEADERS }
+        );
+
         res.redirect('/');
     } catch (error) {
         console.error('Error submitting to Notion:', error.response ? error.response.data : error.message);
@@ -139,126 +161,54 @@ app.post('/submit', async (req, res) => {
     }
 });
 
-// Proxy route for fetching projects from Notion
-app.post('/fetch-projects', async (req, res) => {
-    try {
-        const response = await axios.post('https://api.notion.com/v1/databases/cb577993a053443d9515f077a3a9f876/query', {}, {
-            headers: {
-                'Authorization': `Bearer secret_EU6lsUCuIMro9cCy0NE54BJLuE7nkKamQoNUIh3Bgfj`, // Your Notion API token
-                'Notion-Version': '2022-06-28',
-                'Content-Type': 'application/json',
-            },
-        });
-        res.json(response.data); // Send the response data back to the client
-    } catch (error) {
-        console.error('Error fetching projects from Notion:', error);
-        res.status(500).send('Error fetching projects from Notion');
-    }
-});
-
-// New route to fetch a specific project by ID
-app.get('/fetch-project/:id', async (req, res) => {
-    const projectId = req.params.id;
-
-    try {
-        const response = await axios.get(`https://api.notion.com/v1/pages/${projectId}`, {
-            headers: {
-                'Authorization': `Bearer secret_EU6lsUCuIMro9cCy0NE54BJLuE7nkKamQoNUIh3Bgfj`, // Your Notion API token
-                'Notion-Version': '2022-06-28',
-                'Content-Type': 'application/json',
-            },
-        });
-        res.json(response.data); // Send the project data back to the client
-    } catch (error) {
-        console.error('Error fetching project from Notion:', error);
-        res.status(500).send('Error fetching project from Notion');
-    }
-});
-
-
-
-//Analytics code
-
-// Route to track visitor data
+// Analytics tracking
 app.post('/api/track-visit', async (req, res) => {
-    console.log('Received visitor data:', req.body); // Log the incoming visitor data
-
     const visitorData = req.body;
-
-    // Prepare data for Notion
-    const notionData = {
-        parent: { database_id: '1b06229e914080ed8de4db37e1673ef6' }, // Your analytics database ID
-        properties: {
-            'Visitor ID': { 
-                title: [
-                    { text: { content: visitorData.visitorId } }
-                ]
-            },
-            'Device Info': { 
-                rich_text: [
-                    { text: { content: visitorData.deviceInfo } }
-                ]
-            },
-            'Screen Size': { 
-                rich_text: [
-                    { text: { content: visitorData.screenSize } }
-                ]
-            },
-            'Visit Time': { 
-                rich_text: [
-                    { text: { content: visitorData.visitTime } }
-                ]
-            },
-            'Referrer': { 
-                rich_text: [
-                    { text: { content: visitorData.referrer || '' } }
-                ]
-            },
-            'Location': { 
-                rich_text: [
-                    {
-                        text: {
-                            content: visitorData.location || ''
-                        }
-                    }
-                ]
-            }
-        }
-    };
-
-    console.log('Notion data prepared:', notionData); // Log the prepared Notion data
-
+    
     try {
-        // Send data to Notion
-        const response = await axios.post('https://api.notion.com/v1/pages', notionData, {
-            headers: {
-                'Authorization': `Bearer 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`, // Your Notion API token
-                'Content-Type': 'application/json',
-                'Notion-Version': '2022-06-28' // Use the latest version
+        const notionData = {
+            parent: { database_id: NOTION_CONFIG.DATABASES.ANALYTICS },
+            properties: {
+                'Visitor ID': { 
+                    title: [{ text: { content: visitorData.visitorId } }]
+                },
+                'Device Info': { 
+                    rich_text: [{ text: { content: visitorData.deviceInfo } }]
+                },
+                'Screen Size': { 
+                    rich_text: [{ text: { content: visitorData.screenSize } }]
+                },
+                'Visit Time': { 
+                    rich_text: [{ text: { content: visitorData.visitTime } }]
+                },
+                'Referrer': { 
+                    rich_text: [{ text: { content: visitorData.referrer || '' } }]
+                },
+                'Location': { 
+                    rich_text: [{ text: { content: visitorData.location || '' } }]
+                }
             }
-        });
+        };
 
-        console.log('Response from Notion:', response.data); // Log the response from Notion
+        const response = await axios.post(
+            `${API_ENDPOINTS.NOTION.BASE_URL}${API_ENDPOINTS.NOTION.PAGES}`,
+            notionData,
+            { headers: NOTION_HEADERS }
+        );
 
         if (response.data.object === 'page' && response.data.id) {
-            console.log('Page created successfully:', response.data.id);
+            res.send({ message: 'Visitor data saved successfully' });
         } else {
-            console.error('Failed to create page in Notion:', response.data);
+            throw new Error('Failed to create page in Notion');
         }
-
-        console.log('Visitor data submitted to Notion:', visitorData);
-        res.send({ message: 'Visitor data saved successfully' });
-        
     } catch (error) {
         console.error('Error submitting to Notion:', error.response ? error.response.data : error.message);
         res.status(500).send({ message: 'Error submitting visitor data to Notion' });
     }
 });
 
-
-
-
 // Start the server
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });

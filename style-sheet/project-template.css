@@ -5,6 +5,16 @@
 
 .project-template-bg-clr{
     overflow: hidden;
+    border-radius: 2rem;
+    margin: 0px 1rem 1rem 1rem;
+    height: 85vh;
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .project-template-bg-clr::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
 }
 
 
@@ -29,7 +39,7 @@
 
 /* Heading styles */
 h1 {
-    font-family: "Roboto Flex", sans-serif;
+    font-family: "RecklessTRIAL-Bold", "Roboto Flex", sans-serif;
     font-optical-sizing: auto;
     font-size: 2em;
     color: var(--txt-primary, #000);
@@ -38,7 +48,7 @@ h1 {
 }
 
 h2 {
-    font-family: "Roboto Flex", sans-serif;
+    font-family: "RecklessTRIAL-Bold", "Roboto Flex", sans-serif;
     font-optical-sizing: auto;
     font-size: 1.75em;
     font-weight: 500;
@@ -48,7 +58,7 @@ h2 {
 }
 
 h3 {
-    font-family: "Roboto Flex", sans-serif;
+    font-family: "RecklessTRIAL-Bold", "Roboto Flex", sans-serif;
     font-optical-sizing: auto;
     font-size: 1.7rem;
     font-weight: 500;
@@ -108,7 +118,7 @@ table {
 
 /* Quote Styles */
 blockquote {
-    font-family: "Roboto Flex", sans-serif;
+    font-family: "RecklessTRIAL-Bold", "Roboto Flex", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 3rem;
@@ -130,7 +140,7 @@ border-radius: 1rem;
 ul,
 ol {
   margin-left: 20px; /* Indent lists */
-  font-family: "Roboto Flex", sans-serif;
+  font-family: "RecklessTRIAL-Bold", "Roboto Flex", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 1.2rem;

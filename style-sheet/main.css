@@ -213,7 +213,7 @@ a {
 }
 
 a:visited {
-  color: black; /* Set the same color as the default for visited links */
+  color: var(--brand-primary-clr) /* Set the same color as the default for visited links */
 }
 
 p {

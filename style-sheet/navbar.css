@@ -16,14 +16,6 @@
     opacity: 1; /* Fully opaque when the class is added */
 }
 
-.brand-logo {
-    color: var(--txt-primary, #000);
-    font-family: "Roboto Flex", sans-serif;
-  font-size: 2rem;
-  font-optical-sizing: auto;
-  font-weight: 720;
-  font-style: normal;
-}
 
 .nav-lnk-lst-wrp {
     display: flex; /* Default to flex for desktop */
@@ -32,16 +24,26 @@
     gap: 1rem;
     flex: 1 0 0;
 }
-
+.nav-link-txt {
+    color: var(--brand-primary-clr, #DFF249);
+    font-family: "RecklessTRIAL-Regular", "Spline Sans";
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.6875rem; /* 150% */
+    text-decoration: none; /* Remove underline */
+}
 /* Hide nav links by default on mobile */
 #nav-links {
     /* display: flex; Default to flex for desktop */
+    color: var(--brand-primary-clr);
 }
 
 /* Hamburger icon styling */
 .hamburger {
     display: none; /* Hidden by default */
     cursor: pointer; /* Change cursor to pointer */
+    color: var(--brand-primary-clr, #DFF249);
 }
 
 /* Media Queries */

@@ -99,9 +99,9 @@ html {
 :root {
   --brand-primary-clr: #DFF249;
   --brand-secondary-clr: #640ad6;
-  --txt-primary: #000000;
-  --txt-secondary: #222222;
-  --txt-tertiary: #545454;
+  --txt-primary: #F8F5E6;
+  --txt-secondary: #F8F5E6;
+  --txt-tertiary: #F8F5E6;
   --main-bg-clr: #0D0D0D;
   --border-clr-b1: #ebebe5;
   --container-bg-clr: #fafafa;
@@ -197,16 +197,17 @@ h4 {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 1.4rem;
+  font-size: 1rem;
   margin-top: 0.2rem;
   margin-bottom: 0.3rem;
+  color: var(--txt-primary);
 }
 
 a {
   text-decoration: none;
   color: black; /* Set the same color as the default for visited links */
   font-family: "RecklessTRIAL-Regular", "Roboto Flex", sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-optical-sizing: auto;
   font-weight: 500;
   line-height: 1.5rem;

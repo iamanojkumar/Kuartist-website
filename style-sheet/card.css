@@ -45,7 +45,7 @@ margin: 0px;
 .project-card {
     border-radius: 5px;
     width: 100%;
-    max-width: 49%;
+    max-width: calc(24% + (8% * var(--random-factor, 1)));
     text-align: left;
     cursor: pointer;
     transition: transform 0.2s; /* Transition for the card */
@@ -59,7 +59,7 @@ margin: 0px;
     flex-wrap: wrap;
     align-self: center;
     justify-content: left;
-    gap: 1rem;
+    gap: 1.5rem;
     padding-top: 1rem;
 }
 
@@ -73,8 +73,9 @@ margin: 0px;
 
 
 .project-card p {
-    color: #666;
-    font-size: 1.1rem;
+    color: var(--txt-primary);
+    font-size: 1rem;
+    opacity: 0.8;
 }
 
 @media (max-width: 768px) {
